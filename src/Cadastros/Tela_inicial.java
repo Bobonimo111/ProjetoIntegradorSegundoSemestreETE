@@ -65,12 +65,27 @@ public class Tela_inicial extends javax.swing.JFrame {
         jMenuOperacional.setText("Operacional");
 
         jMenuItemItem.setText("Item");
+        jMenuItemItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemItemActionPerformed(evt);
+            }
+        });
         jMenuOperacional.add(jMenuItemItem);
 
         jMenuItemPedido.setText("Agendar Pedido");
+        jMenuItemPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPedidoActionPerformed(evt);
+            }
+        });
         jMenuOperacional.add(jMenuItemPedido);
 
         jMenuItemEstoque.setText("Adicionar ao estoque");
+        jMenuItemEstoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEstoqueActionPerformed(evt);
+            }
+        });
         jMenuOperacional.add(jMenuItemEstoque);
 
         jMenuBar1.add(jMenuOperacional);
@@ -104,6 +119,18 @@ public class Tela_inicial extends javax.swing.JFrame {
     private void jMenuItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteActionPerformed
         new Cliente().setVisible(true);
     }//GEN-LAST:event_jMenuItemClienteActionPerformed
+
+    private void jMenuItemItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemItemActionPerformed
+        new Item().setVisible(true);
+    }//GEN-LAST:event_jMenuItemItemActionPerformed
+
+    private void jMenuItemPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPedidoActionPerformed
+        new Pedido().setVisible(true);
+    }//GEN-LAST:event_jMenuItemPedidoActionPerformed
+
+    private void jMenuItemEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEstoqueActionPerformed
+        new Estoque().setVisible(true);
+    }//GEN-LAST:event_jMenuItemEstoqueActionPerformed
 
     /**
      * @param args the command line arguments
