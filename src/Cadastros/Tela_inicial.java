@@ -29,7 +29,8 @@ public class Tela_inicial extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        jLabel2 = new javax.swing.JLabel();
+        jMenuBarNavegacao = new javax.swing.JMenuBar();
         jMenuCadastros = new javax.swing.JMenu();
         jMenuItemCliente = new javax.swing.JMenuItem();
         jMenuItemFuncionario = new javax.swing.JMenuItem();
@@ -41,6 +42,9 @@ public class Tela_inicial extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/coffee-icon2.png"))); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setText("Dellicatessen");
 
         jMenuCadastros.setText("Cadastros");
 
@@ -60,7 +64,7 @@ public class Tela_inicial extends javax.swing.JFrame {
         });
         jMenuCadastros.add(jMenuItemFuncionario);
 
-        jMenuBar1.add(jMenuCadastros);
+        jMenuBarNavegacao.add(jMenuCadastros);
 
         jMenuOperacional.setText("Operacional");
 
@@ -88,31 +92,38 @@ public class Tela_inicial extends javax.swing.JFrame {
         });
         jMenuOperacional.add(jMenuItemEstoque);
 
-        jMenuBar1.add(jMenuOperacional);
+        jMenuBarNavegacao.add(jMenuOperacional);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBarNavegacao);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(93, 93, 93)
+                .addGap(149, 149, 149)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(102, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addGap(99, 99, 99))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(12, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGap(17, 17, 17))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFuncionarioActionPerformed
+        this.dispose();
         new Funcionario().setVisible(true);
     }//GEN-LAST:event_jMenuItemFuncionarioActionPerformed
 
@@ -166,10 +177,12 @@ public class Tela_inicial extends javax.swing.JFrame {
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenuBar jMenuBarNavegacao;
     private javax.swing.JMenu jMenuCadastros;
     private javax.swing.JMenuItem jMenuItemCliente;
     private javax.swing.JMenuItem jMenuItemEstoque;
