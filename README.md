@@ -11,3 +11,7 @@ Faço esse projeto como avaliação do segundo semestre do meu curso de desenvol
 1. Logica de programação
 1. programação direcionada a objetos(POO)
 1. integração a banco de dados(MYSQL)
+
+```
+git clone https://github.com/Bobonimo111/ProjetoIntegradorSegundoSemestreETE
+```
