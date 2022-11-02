@@ -3,7 +3,7 @@
 
 ## Intuito
 
-Faço esse projeto como avaliação do segundo semestre do meu curso de desenvolvimento de sistemas do colegio tecnico José Humberto de moura cavalcate.
+Faço esse projeto como avaliação do segundo semestre do meu curso de desenvolvimento de sistemas da escola tecnica José Humberto de moura cavalcate.
 
 ## Itens explorados
 
