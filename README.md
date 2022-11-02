@@ -1,4 +1,13 @@
-# ProjetoIntegradorSegundoSemestreETE
+## ProjetoIntegradorSegundoSemestreETE
 
 
-Esse arquivo tem o intuito salva o projeto integrador da 
+## Intuito
+
+Faço esse projeto como avaliação do segundo semestre do meu curso de desenvolvimento de sistemas do colegio tecnico José Humberto de moura cavalcate.
+
+## Itens explorados
+
+1. Design de interfaces
+1. Logica de programação
+1. programação direcionada a objetos(POO)
+1. integração a banco de dados(MYSQL)
