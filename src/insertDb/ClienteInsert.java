@@ -9,8 +9,11 @@ package insertDb;
  * @author Aluno
  */
 public class ClienteInsert {
-    
-   
-            
+   private String telefone;
+   private String endereco;
+   private String cpf;
+   private String data_nascimento;
+   private String nome;
+         
     
 }

@@ -9,5 +9,9 @@ package insertDb;
  * @author Aluno
  */
 public class PedidoInsert {
-    
+    private String item;
+    private String data_entrega;
+    private String cliente_id;
+    private String observacao;
+    private int quantidade ;
 }

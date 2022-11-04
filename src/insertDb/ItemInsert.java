@@ -9,5 +9,7 @@ package insertDb;
  * @author Aluno
  */
 public class ItemInsert {
-    
+    private String nome;
+    private String validade;
+    private double valor;
 }

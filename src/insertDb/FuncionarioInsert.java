@@ -10,4 +10,14 @@ package insertDb;
  */
 public class FuncionarioInsert {
     
+    private String nome;
+    private String telefone;
+    private Double salario;
+    private String cargo;
+    private String data_nascimento;
+    private String data_pagamento;
+    private String turno;
+    private String rg;
+    private String cpf;
+        
 }
