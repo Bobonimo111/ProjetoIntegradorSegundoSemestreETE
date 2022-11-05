@@ -51,7 +51,7 @@ public class RepClientes {
        return true;
     }
     
-  public List<Cliente> retornar(){
+    public List<Cliente> retornar(){
       
       con = ConexaoMySql.getConexao();
       List<Cliente> clientes = new ArrayList<>();
@@ -84,7 +84,7 @@ public class RepClientes {
       return clientes;
   }  
   
-      public boolean atualizar(Cliente cliente) {
+    public boolean atualizar(Cliente cliente) {
 
         con = ConexaoMySql.getConexao();
         String sql = "update clientes set nome = ?, "
@@ -122,7 +122,7 @@ public class RepClientes {
 
     }  
   
-  public List<Cliente> pesquisa(String valor, String tipoPesquisa){
+    public List<Cliente> pesquisa(String valor, String tipoPesquisa){
       
       con = ConexaoMySql.getConexao();
       List<Cliente> clientes = new ArrayList<>();
@@ -162,9 +162,8 @@ public class RepClientes {
       
       return clientes;
   }  
-    
-  
-  public boolean excluir(int id){
+      
+    public boolean excluir(int id){
       
       con = ConexaoMySql.getConexao();
       String sql = "delete from clientes where id = ?";

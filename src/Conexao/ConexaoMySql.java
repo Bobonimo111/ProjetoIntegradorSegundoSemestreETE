@@ -11,7 +11,7 @@ public class ConexaoMySql {
 
     public static Connection con = null;
     private static final String driver = "com.mysql.jdbc.Driver";
-    private static final String str_connection = "jdbc:mysql://localhost/lojadb";
+    private static final String str_connection = "jdbc:mysql://localhost/DelicatessenBd";
     private static final String user = "root";
     private static final String senha = "";
 
