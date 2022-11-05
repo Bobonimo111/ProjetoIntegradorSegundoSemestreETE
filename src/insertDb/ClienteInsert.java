@@ -10,6 +10,27 @@ package insertDb;
  */
 public class ClienteInsert {
 
+    private int id;
+    private String nome;
+    private String telefone;
+    private String rua,bairro,cidade;
+    private String data_nascimento;
+    private String cpf;
+
+    /**
+     * @return the nome
+     */
+    public String getNome() {
+        return nome;
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     /**
      * @return the telefone
      */
@@ -25,31 +46,45 @@ public class ClienteInsert {
     }
 
     /**
-     * @return the endereco
+     * @return the rua
      */
-    public String getEndereco() {
-        return endereco;
+    public String getRua() {
+        return rua;
     }
 
     /**
-     * @param endereco the endereco to set
+     * @param rua the rua to set
      */
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setRua(String rua) {
+        this.rua = rua;
     }
 
     /**
-     * @return the cpf
+     * @return the bairro
      */
-    public String getCpf() {
-        return cpf;
+    public String getBairro() {
+        return bairro;
     }
 
     /**
-     * @param cpf the cpf to set
+     * @param bairro the bairro to set
      */
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    /**
+     * @return the cidade
+     */
+    public String getCidade() {
+        return cidade;
+    }
+
+    /**
+     * @param cidade the cidade to set
+     */
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     /**
@@ -67,23 +102,32 @@ public class ClienteInsert {
     }
 
     /**
-     * @return the nome
+     * @return the cpf
      */
-    public String getNome() {
-        return nome;
+    public String getCpf() {
+        return cpf;
     }
 
     /**
-     * @param nome the nome to set
+     * @param cpf the cpf to set
      */
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
-    private String telefone;
-    private String endereco;
-    private String cpf;
-    private String data_nascimento;
-    private String nome;
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
          
    
 }

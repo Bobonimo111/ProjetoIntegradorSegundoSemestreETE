@@ -9,19 +9,19 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import classes.Cliente;
+import insertDb.ClienteInsert;
 
 public class RepClientes {
     
     Connection con;
 
-    public boolean inserir(Cliente cliente){
+    public boolean inserir(ClienteInsert cliente){
         
         con = ConexaoMySql.getConexao(); 
         
         String sql = "insert into clientes (nome,"
-                 + "cpf,telefone,endereco,bairro,cidade) values "
-                 + "(?,?,?,?,?,?)";
+                 + "cpf,telefone,rua,bairro,cidade,data_nascimento) values "
+                 + "(?,?,?,?,?,?,?)";
          try{
              con.setAutoCommit(false);
              PreparedStatement stmt = con.prepareStatement(sql);
@@ -29,9 +29,10 @@ public class RepClientes {
              stmt.setString(1, cliente.getNome());
              stmt.setString(2, cliente.getCpf());
              stmt.setString(3, cliente.getTelefone());
-             stmt.setString(4, cliente.getEndereco());
+             stmt.setString(4, cliente.getRua());
              stmt.setString(5, cliente.getBairro());
              stmt.setString(6, cliente.getCidade());
+             stmt.setString(7, cliente.getData_nascimento());
              
              stmt.execute();
              con.commit();
@@ -51,10 +52,10 @@ public class RepClientes {
        return true;
     }
     
-    public List<Cliente> retornar(){
+    public List<ClienteInsert> retornar(){
       
       con = ConexaoMySql.getConexao();
-      List<Cliente> clientes = new ArrayList<>();
+      List<ClienteInsert> clientes = new ArrayList<>();
       
       String sql = "select * from clientes order by id desc";
       
@@ -63,13 +64,13 @@ public class RepClientes {
           ResultSet rs = stmt.executeQuery(sql);
           while(rs.next()){
               
-              Cliente cliente = new Cliente();
+              ClienteInsert cliente = new ClienteInsert();
               
               cliente.setId(rs.getInt("id"));
               cliente.setNome(rs.getString("nome"));
               cliente.setCpf(rs.getString("cpf"));
               cliente.setTelefone(rs.getString("telefone"));
-              cliente.setEndereco(rs.getString("endereco"));
+              cliente.setRua(rs.getString("endereco"));
               cliente.setBairro(rs.getString("bairro"));
               cliente.setCidade(rs.getString("cidade"));
               
@@ -84,7 +85,7 @@ public class RepClientes {
       return clientes;
   }  
   
-    public boolean atualizar(Cliente cliente) {
+    public boolean atualizar(ClienteInsert cliente) {
 
         con = ConexaoMySql.getConexao();
         String sql = "update clientes set nome = ?, "
@@ -96,7 +97,7 @@ public class RepClientes {
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getCpf());
             stmt.setString(3, cliente.getTelefone());
-            stmt.setString(4, cliente.getEndereco());
+            stmt.setString(4, cliente.getRua());
             stmt.setString(5, cliente.getBairro());
             stmt.setString(6, cliente.getCidade());
             stmt.setInt(7, cliente.getId());
@@ -122,10 +123,10 @@ public class RepClientes {
 
     }  
   
-    public List<Cliente> pesquisa(String valor, String tipoPesquisa){
+    public List<ClienteInsert> pesquisa(String valor, String tipoPesquisa){
       
       con = ConexaoMySql.getConexao();
-      List<Cliente> clientes = new ArrayList<>();
+      List<ClienteInsert> clientes = new ArrayList<>();
       
       String sql = "";
       
@@ -142,13 +143,13 @@ public class RepClientes {
           ResultSet rs = stmt.executeQuery(sql);
           while(rs.next()){
               
-              Cliente cliente = new Cliente();
+              ClienteInsert cliente = new ClienteInsert();
               
               cliente.setId(rs.getInt("id"));
               cliente.setNome(rs.getString("nome"));
               cliente.setCpf(rs.getString("cpf"));
               cliente.setTelefone(rs.getString("telefone"));
-              cliente.setEndereco(rs.getString("endereco"));
+              cliente.setRua(rs.getString("endereco"));
               cliente.setBairro(rs.getString("bairro"));
               cliente.setCidade(rs.getString("cidade"));
               

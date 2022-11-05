@@ -98,10 +98,10 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabelEndereco" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelRua" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="jTextFieldEndereco" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldRua" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -136,21 +136,21 @@
                       <Component id="jLabelCpf" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelNascimento" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jTextFieldCpf" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextFieldNascimento" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jLabelEndereco" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelRua" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextFieldEndereco" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldRua" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabelTitulo" min="-2" max="-2" attributes="0"/>
@@ -207,23 +207,23 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldNomeActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelEndereco">
+        <Component class="javax.swing.JLabel" name="jLabelRua">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Endere&#xe7;o*"/>
+            <Property name="text" type="java.lang.String" value="Rua*"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldEndereco">
+        <Component class="javax.swing.JTextField" name="jTextFieldRua">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelBairro">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Bairro"/>
+            <Property name="text" type="java.lang.String" value="Bairro*"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldBairro">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelCidade">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cidade"/>
+            <Property name="text" type="java.lang.String" value="Cidade*"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldCidade">

@@ -6,6 +6,7 @@ package Cadastros;
 
 import insertDb.ClienteInsert;
 import javax.swing.JOptionPane;
+import repositorio.RepClientes;
 
 /**
  *
@@ -33,8 +34,8 @@ public class Cliente extends javax.swing.JFrame {
         jLabelTitulo = new javax.swing.JLabel();
         jLabelId = new javax.swing.JLabel();
         jTextFieldNome = new javax.swing.JTextField();
-        jLabelEndereco = new javax.swing.JLabel();
-        jTextFieldEndereco = new javax.swing.JTextField();
+        jLabelRua = new javax.swing.JLabel();
+        jTextFieldRua = new javax.swing.JTextField();
         jLabelBairro = new javax.swing.JLabel();
         jTextFieldBairro = new javax.swing.JTextField();
         jLabelCidade = new javax.swing.JLabel();
@@ -64,11 +65,11 @@ public class Cliente extends javax.swing.JFrame {
             }
         });
 
-        jLabelEndereco.setText("Endereço*");
+        jLabelRua.setText("Rua*");
 
-        jLabelBairro.setText("Bairro");
+        jLabelBairro.setText("Bairro*");
 
-        jLabelCidade.setText("Cidade");
+        jLabelCidade.setText("Cidade*");
 
         jLabelTelefone.setText("Telefone*");
 
@@ -134,9 +135,9 @@ public class Cliente extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabelEndereco)
+                                    .addComponent(jLabelRua)
                                     .addGap(0, 0, Short.MAX_VALUE))
-                                .addComponent(jTextFieldEndereco)))
+                                .addComponent(jTextFieldRua)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                             .addComponent(jButtonExcluir)
                             .addGap(18, 18, 18)
@@ -161,19 +162,19 @@ public class Cliente extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelCpf, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelNascimento, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(83, 83, 83))
+                .addGap(89, 89, 89))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabelEndereco)
+                            .addComponent(jLabelRua)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(jLabelTitulo)
                             .addGap(40, 40, 40)
@@ -221,19 +222,33 @@ public class Cliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+            
+
         //Checa os campos obrigatorio a serem adicionados
         if(jTextFieldTelefone.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Prencha os campos corretamente");
-        }
-        else if(jTextFieldNome.getText().equals("")){
+        }else if(jTextFieldNome.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Prencha os campos corretamente");
-        }
-        else if(jTextFieldEndereco.getText().equals("")){
+        }else if(jTextFieldRua.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Prencha os campos corretamente");
+        }else if(jTextFieldBairro.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Prencha os campos corretamente");
+        }else if(jTextFieldCidade.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Prencha os campos corretamente");
         }
         else{
             //Adicona as informações ao objeto cliente
             ClienteInsert cl = new ClienteInsert();
+            cl.setNome(jTextFieldNome.getText());
+            cl.setTelefone(jTextFieldTelefone.getText());
+            cl.setRua(jTextFieldRua.getText());
+            cl.setBairro(jTextFieldBairro.getText());
+            cl.setCidade(jTextFieldCidade.getText());
+            cl.setData_nascimento(jTextFieldNascimento.getText());
+            cl.setCpf(jTextFieldCpf.getText());
+            
+            RepClientes rep = new RepClientes();
+            rep.inserir(cl);
             
             
         }
@@ -290,20 +305,20 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelBairro;
     private javax.swing.JLabel jLabelCidade;
     private javax.swing.JLabel jLabelCpf;
-    private javax.swing.JLabel jLabelEndereco;
     private javax.swing.JLabel jLabelId;
     private javax.swing.JLabel jLabelNascimento;
     private javax.swing.JLabel jLabelNome;
+    private javax.swing.JLabel jLabelRua;
     private javax.swing.JLabel jLabelTelefone;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextFieldBairro;
     private javax.swing.JTextField jTextFieldCidade;
     private javax.swing.JTextField jTextFieldCpf;
-    private javax.swing.JTextField jTextFieldEndereco;
     private javax.swing.JTextField jTextFieldId;
     private javax.swing.JTextField jTextFieldNascimento;
     private javax.swing.JTextField jTextFieldNome;
+    private javax.swing.JTextField jTextFieldRua;
     private javax.swing.JTextField jTextFieldTelefone;
     // End of variables declaration//GEN-END:variables
 }
