@@ -4,7 +4,9 @@
  */
 package Cadastros;
 
+import javax.swing.JOptionPane;
 import main.Main;
+import repositorio.*;
 
 /**
  *
@@ -67,6 +69,11 @@ public class Tela_inicial extends javax.swing.JFrame {
         jLabel2.setText("Delicatessen");
 
         panel1.setBackground(new java.awt.Color(102, 102, 102));
+        panel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panel1MouseClicked(evt);
+            }
+        });
 
         jLabelEstoqueIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Estoque_icon.png"))); // NOI18N
 
@@ -108,6 +115,11 @@ public class Tela_inicial extends javax.swing.JFrame {
         );
 
         panel6.setBackground(new java.awt.Color(102, 102, 102));
+        panel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panel6MouseClicked(evt);
+            }
+        });
 
         jLabelClientesIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Pessoa_icon.png"))); // NOI18N
 
@@ -397,6 +409,15 @@ public class Tela_inicial extends javax.swing.JFrame {
     private void jMenuItemEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEstoqueActionPerformed
         new Estoque().setVisible(true);
     }//GEN-LAST:event_jMenuItemEstoqueActionPerformed
+
+    private void panel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panel1MouseClicked
+
+    private void panel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel6MouseClicked
+        //Cliene
+       
+    }//GEN-LAST:event_panel6MouseClicked
 
     /**
      * @param args the command line arguments

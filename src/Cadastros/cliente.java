@@ -87,6 +87,11 @@ public class Cliente extends javax.swing.JFrame {
         jButtonEditar.setText("Editar");
 
         jButtonExcluir.setText("Excluir");
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
 
         jLabelNome.setText("Nome*");
 
@@ -111,6 +116,14 @@ public class Cliente extends javax.swing.JFrame {
                         .addComponent(jLabelNome))
                     .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(235, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonExcluir)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonEditar)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonSalvar)
+                .addGap(18, 18, 18))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
@@ -138,12 +151,6 @@ public class Cliente extends javax.swing.JFrame {
                                     .addComponent(jLabelRua)
                                     .addGap(0, 0, Short.MAX_VALUE))
                                 .addComponent(jTextFieldRua)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                            .addComponent(jButtonExcluir)
-                            .addGap(18, 18, 18)
-                            .addComponent(jButtonEditar)
-                            .addGap(18, 18, 18)
-                            .addComponent(jButtonSalvar))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(jLabelTitulo)
                             .addGap(0, 276, Short.MAX_VALUE)))
@@ -158,7 +165,7 @@ public class Cliente extends javax.swing.JFrame {
                     .addComponent(jLabelNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelCpf, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelNascimento, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -166,7 +173,12 @@ public class Cliente extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(89, 89, 89))
+                .addGap(42, 42, 42)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonSalvar)
+                    .addComponent(jButtonEditar)
+                    .addComponent(jButtonExcluir))
+                .addGap(25, 25, 25))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
@@ -193,12 +205,7 @@ public class Cliente extends javax.swing.JFrame {
                             .addComponent(jLabelTelefone)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(103, 103, 103)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonSalvar)
-                        .addComponent(jButtonEditar)
-                        .addComponent(jButtonExcluir))
-                    .addContainerGap(30, Short.MAX_VALUE)))
+                    .addContainerGap(160, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -208,19 +215,20 @@ public class Cliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(15, 15, 15)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
             
 
@@ -248,7 +256,12 @@ public class Cliente extends javax.swing.JFrame {
             cl.setCpf(jTextFieldCpf.getText());
             
             RepClientes rep = new RepClientes();
-            rep.inserir(cl);
+            if(rep.inserir(cl)){
+                JOptionPane.showConfirmDialog(null, "Cliente adicionado com sucesso");
+            }
+            else{
+                JOptionPane.showConfirmDialog(null, "Cliente não adicionado");
+            }
             
             
         }
@@ -259,6 +272,29 @@ public class Cliente extends javax.swing.JFrame {
     private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldNomeActionPerformed
+
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        RepClientes rep = new RepClientes();
+        String id_str = jTextFieldId.getText();
+        if(id_str.equals("")){
+            JOptionPane.showMessageDialog(null, "Campo ID necessario para exclusão");
+        }
+        else{
+            try{
+                int id = Integer.parseInt(id_str);
+                if(rep.excluir(id)){
+                    JOptionPane.showMessageDialog(null, "Exclusão realizada com sucesso");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Exclusão falhou ID não localizado");
+                }
+                
+                
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "Operação de exclusão não Realizada \n"+ e);
+        }
+        }
+            
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     /**
      * @param args the command line arguments

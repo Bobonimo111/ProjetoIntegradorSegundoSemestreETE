@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import insertDb.ClienteInsert;
+import javax.swing.JOptionPane;
 
 public class RepClientes {
     
@@ -70,13 +71,15 @@ public class RepClientes {
               cliente.setNome(rs.getString("nome"));
               cliente.setCpf(rs.getString("cpf"));
               cliente.setTelefone(rs.getString("telefone"));
-              cliente.setRua(rs.getString("endereco"));
+              cliente.setRua(rs.getString("rua"));
               cliente.setBairro(rs.getString("bairro"));
               cliente.setCidade(rs.getString("cidade"));
+              cliente.setData_nascimento(rs.getString("data_nascimento"));
               
               clientes.add(cliente);
           }            
       }catch(SQLException ex){
+          JOptionPane.showMessageDialog(null, "Não foi possivel extrair itens" + ex);
           return null;
       }
       
