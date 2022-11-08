@@ -415,7 +415,8 @@ public class Tela_inicial extends javax.swing.JFrame {
     }//GEN-LAST:event_panel1MouseClicked
 
     private void panel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel6MouseClicked
-        //Cliene
+        //Cliente
+        new Cliente().setVisible(true);
        
     }//GEN-LAST:event_panel6MouseClicked
 
