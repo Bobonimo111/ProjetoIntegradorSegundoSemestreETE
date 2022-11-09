@@ -47,7 +47,7 @@
                               <Component id="jLabelNumeroCasa" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jTextFieldNumeroCasa" pref="96" max="32767" attributes="0"/>
+                          <Component id="jTextFieldTelefone" pref="96" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -119,7 +119,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jTextFieldEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldNumeroCasa" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -203,7 +203,7 @@
         <Property name="text" type="java.lang.String" value="Telefone*"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldNumeroCasa">
+    <Component class="javax.swing.JTextField" name="jTextFieldTelefone">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelCargo">
       <Properties>
@@ -230,6 +230,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Salvar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSalvarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonEditar">
       <Properties>

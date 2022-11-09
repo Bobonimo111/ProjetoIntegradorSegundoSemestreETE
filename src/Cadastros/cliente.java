@@ -99,6 +99,14 @@ public class Cliente extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonExcluir)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonEditar)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonSalvar)
+                .addGap(18, 18, 18))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,19 +119,12 @@ public class Cliente extends javax.swing.JFrame {
                             .addComponent(jTextFieldNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelNascimento)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addComponent(jLabelId)
-                        .addGap(32, 32, 32)
+                        .addGap(26, 26, 26)
                         .addComponent(jLabelNome))
                     .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(235, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonExcluir)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonEditar)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonSalvar)
-                .addGap(18, 18, 18))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
@@ -165,7 +166,7 @@ public class Cliente extends javax.swing.JFrame {
                     .addComponent(jLabelNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelCpf, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelNascimento, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -173,7 +174,7 @@ public class Cliente extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
+                .addGap(57, 57, 57)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSalvar)
                     .addComponent(jButtonEditar)
@@ -205,7 +206,7 @@ public class Cliente extends javax.swing.JFrame {
                             .addComponent(jLabelTelefone)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(160, Short.MAX_VALUE)))
+                    .addContainerGap(169, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -220,7 +221,7 @@ public class Cliente extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -228,6 +229,15 @@ public class Cliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
+    public void limparCampos(){
+        jTextFieldBairro.setText("");
+        jTextFieldCidade.setText("");
+        jTextFieldCpf.setText("");
+        jTextFieldNascimento.setText("");
+        jTextFieldNome.setText("");
+        jTextFieldRua.setText("");
+        jTextFieldTelefone.setText("");        
+    }
     
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
             
@@ -258,6 +268,7 @@ public class Cliente extends javax.swing.JFrame {
             RepClientes rep = new RepClientes();
             if(rep.inserir(cl)){
                 JOptionPane.showConfirmDialog(null, "Cliente adicionado com sucesso");
+                limparCampos();
             }
             else{
                 JOptionPane.showConfirmDialog(null, "Cliente não adicionado");

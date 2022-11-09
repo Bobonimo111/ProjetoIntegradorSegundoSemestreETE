@@ -4,6 +4,11 @@
  */
 package Cadastros;
 
+import insertDb.ClienteInsert;
+import insertDb.FuncionarioInsert;
+import javax.swing.JOptionPane;
+import repositorio.*;
+
 /**
  *
  * @author Aluno
@@ -36,7 +41,7 @@ public class Funcionario extends javax.swing.JFrame {
         jLabelCidade = new javax.swing.JLabel();
         jTextFieldCidade = new javax.swing.JTextField();
         jLabelNumeroCasa = new javax.swing.JLabel();
-        jTextFieldNumeroCasa = new javax.swing.JTextField();
+        jTextFieldTelefone = new javax.swing.JTextField();
         jLabelCargo = new javax.swing.JLabel();
         jTextFieldCargo = new javax.swing.JTextField();
         jLabelTurno = new javax.swing.JLabel();
@@ -71,6 +76,11 @@ public class Funcionario extends javax.swing.JFrame {
         jLabelNascimento.setText("Data de Nascimento*");
 
         jButtonSalvar.setText("Salvar");
+        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarActionPerformed(evt);
+            }
+        });
 
         jButtonEditar.setText("Editar");
 
@@ -107,7 +117,7 @@ public class Funcionario extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabelNumeroCasa)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jTextFieldNumeroCasa, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)))
+                            .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButtonExcluir)
@@ -161,7 +171,7 @@ public class Funcionario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldNumeroCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -199,6 +209,51 @@ public class Funcionario extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
+    private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+        // TODO add your handling code here:
+        
+        if(jTextFieldTelefone.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Prencha os campos corretamente");
+        }else if(jTextFieldNome.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Prencha os campos corretamente");
+        }else if(jTextFieldTelefone.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Prencha os campos corretamente");
+        }else if(jTextFieldBairro.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Prencha os campos corretamente");
+        }else if(jTextFieldCidade.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Prencha os campos corretamente");
+        }
+        else if(jTextFieldNascimento.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Prencha os campos corretamente");
+        }
+        else if(jTextFieldTurno.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Prencha os campos corretamente");
+        }
+        else if(jTextFieldCargo.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Prencha os campos corretamente");
+        }
+        else{
+            FuncionarioInsert fn = new FuncionarioInsert();
+            fn.setNome(jTextFieldNome.getText());
+            fn.setTelefone(jTextFieldTelefone.getText());
+            fn.setEndereco(jTextFieldEndereco.getText());
+            fn.setBairro(jTextFieldBairro.getText());
+            fn.setCidade(jTextFieldCidade.getText());
+            fn.setData_nascimento(jTextFieldNascimento.getText());
+            fn.setCargo(jTextFieldCargo.getText());
+            fn.setTurno(jTextFieldTurno.getText());
+            
+            RepFuncionario rep = new RepFuncionario();
+            if(rep.inserir(fn)){
+                JOptionPane.showConfirmDialog(null, "Cliente adicionado com sucesso");
+                //limparCampos();
+            }
+            else{
+                JOptionPane.showConfirmDialog(null, "Cliente não adicionado");
+            }
+        }
+    }//GEN-LAST:event_jButtonSalvarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -206,7 +261,7 @@ public class Funcionario extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.orafne.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -256,7 +311,7 @@ public class Funcionario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldId;
     private javax.swing.JTextField jTextFieldNascimento;
     private javax.swing.JTextField jTextFieldNome;
-    private javax.swing.JTextField jTextFieldNumeroCasa;
+    private javax.swing.JTextField jTextFieldTelefone;
     private javax.swing.JTextField jTextFieldTurno;
     // End of variables declaration//GEN-END:variables
 }
