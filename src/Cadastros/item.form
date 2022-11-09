@@ -66,7 +66,7 @@
               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jTextFieldObs" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
+                  <Component id="jTextFieldValor" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                       <Component id="jButtonEnviar" min="-2" max="-2" attributes="0"/>
@@ -75,13 +75,13 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButtonEditar" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jTextFieldItem" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
+                  <Component id="jTextFieldId" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
                   <Component id="jLabelItem" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabelDataEntrega" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabelObservação" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabelClienteId" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldDataEntrega" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
-                  <Component id="jTextFieldClienteId" alignment="0" min="-2" pref="216" max="-2" attributes="0"/>
+                  <Component id="jTextFieldNome" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
+                  <Component id="jTextFieldValiade" alignment="0" min="-2" pref="216" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -105,19 +105,19 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabelItem" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                      <Component id="jTextFieldItem" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldId" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabelDataEntrega" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jTextFieldDataEntrega" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldNome" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabelClienteId" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jTextFieldClienteId" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldValiade" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Component id="jLabelObservação" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextFieldObs" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldValor" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="56" pref="56" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButtonEnviar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -140,7 +140,7 @@
         <Property name="text" type="java.lang.String" value="Item"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldItem">
+    <Component class="javax.swing.JTextField" name="jTextFieldId">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelItem">
       <Properties>
@@ -152,9 +152,9 @@
         <Property name="text" type="java.lang.String" value="Nome*"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldDataEntrega">
+    <Component class="javax.swing.JTextField" name="jTextFieldNome">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldDataEntregaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldNomeActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelClienteId">
@@ -162,7 +162,7 @@
         <Property name="text" type="java.lang.String" value="Validade*"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldClienteId">
+    <Component class="javax.swing.JTextField" name="jTextFieldValiade">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
     </Component>
@@ -171,12 +171,15 @@
         <Property name="text" type="java.lang.String" value="Valor*"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldObs">
+    <Component class="javax.swing.JTextField" name="jTextFieldValor">
     </Component>
     <Component class="javax.swing.JButton" name="jButtonEnviar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Enviar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEnviarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonExcluir">
       <Properties>

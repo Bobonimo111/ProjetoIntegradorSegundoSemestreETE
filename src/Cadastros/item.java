@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Cadastros;
-
+import insertDb.ItemInsert;
+import javax.swing.JOptionPane;
+import repositorio.RepItem;
 /**
  *
  * @author Aluno
@@ -15,6 +17,15 @@ public class Item extends javax.swing.JFrame {
      */
     public Item() {
         initComponents();
+    }
+    public ItemInsert ExtractItens(){
+        ItemInsert in = new ItemInsert();
+        in.setId(Integer.parseInt(jTextFieldId.getText()));
+        in.setNome(jTextFieldNome.getText());
+        in.setValidade(jTextFieldValiade.getText());
+        in.setValor(jTextFieldValor.getText());
+        
+        return in;
     }
 
     /**
@@ -29,15 +40,15 @@ public class Item extends javax.swing.JFrame {
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jInternalFrame2 = new javax.swing.JInternalFrame();
         jLabel1 = new javax.swing.JLabel();
-        jTextFieldItem = new javax.swing.JTextField();
+        jTextFieldId = new javax.swing.JTextField();
         jLabelItem = new javax.swing.JLabel();
         jLabelDataEntrega = new javax.swing.JLabel();
-        jTextFieldDataEntrega = new javax.swing.JTextField();
+        jTextFieldNome = new javax.swing.JTextField();
         jLabelClienteId = new javax.swing.JLabel();
-        jTextFieldClienteId = new javax.swing.JTextField();
+        jTextFieldValiade = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabelObservação = new javax.swing.JLabel();
-        jTextFieldObs = new javax.swing.JTextField();
+        jTextFieldValor = new javax.swing.JTextField();
         jButtonEnviar = new javax.swing.JButton();
         jButtonExcluir = new javax.swing.JButton();
         jButtonEditar = new javax.swing.JButton();
@@ -77,9 +88,9 @@ public class Item extends javax.swing.JFrame {
 
         jLabelDataEntrega.setText("Nome*");
 
-        jTextFieldDataEntrega.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldDataEntregaActionPerformed(evt);
+                jTextFieldNomeActionPerformed(evt);
             }
         });
 
@@ -88,6 +99,11 @@ public class Item extends javax.swing.JFrame {
         jLabelObservação.setText("Valor*");
 
         jButtonEnviar.setText("Enviar");
+        jButtonEnviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEnviarActionPerformed(evt);
+            }
+        });
 
         jButtonExcluir.setText("Excluir");
 
@@ -102,7 +118,7 @@ public class Item extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldObs, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jButtonEnviar)
@@ -110,13 +126,13 @@ public class Item extends javax.swing.JFrame {
                         .addComponent(jButtonExcluir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonEditar))
-                    .addComponent(jTextFieldItem, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelItem)
                     .addComponent(jLabelDataEntrega)
                     .addComponent(jLabelObservação)
                     .addComponent(jLabelClienteId)
-                    .addComponent(jTextFieldDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldClienteId, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldValiade, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addComponent(jLabel1)))
@@ -135,19 +151,19 @@ public class Item extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelItem)
                         .addGap(4, 4, 4)
-                        .addComponent(jTextFieldItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelDataEntrega)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldDataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelClienteId)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextFieldClienteId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldValiade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabelObservação)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldObs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(56, 56, 56)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonEnviar)
@@ -159,9 +175,18 @@ public class Item extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldDataEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDataEntregaActionPerformed
+    private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldDataEntregaActionPerformed
+    }//GEN-LAST:event_jTextFieldNomeActionPerformed
+
+    private void jButtonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnviarActionPerformed
+        
+        if(jTextFieldNome.getText().equals("") || jTextFieldValiade.getText().equals("") || jTextFieldValor.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos, menos o ID");
+        }else{
+            
+        }
+    }//GEN-LAST:event_jButtonEnviarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,9 +236,9 @@ public class Item extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelDataEntrega;
     private javax.swing.JLabel jLabelItem;
     private javax.swing.JLabel jLabelObservação;
-    private javax.swing.JTextField jTextFieldClienteId;
-    private javax.swing.JTextField jTextFieldDataEntrega;
-    private javax.swing.JTextField jTextFieldItem;
-    private javax.swing.JTextField jTextFieldObs;
+    private javax.swing.JTextField jTextFieldId;
+    private javax.swing.JTextField jTextFieldNome;
+    private javax.swing.JTextField jTextFieldValiade;
+    private javax.swing.JTextField jTextFieldValor;
     // End of variables declaration//GEN-END:variables
 }
