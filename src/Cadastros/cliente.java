@@ -85,6 +85,11 @@ public class Cliente extends javax.swing.JFrame {
         });
 
         jButtonEditar.setText("Editar");
+        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarActionPerformed(evt);
+            }
+        });
 
         jButtonExcluir.setText("Excluir");
         jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -239,6 +244,20 @@ public class Cliente extends javax.swing.JFrame {
         jTextFieldTelefone.setText("");        
     }
     
+    public ClienteInsert ExtractItens(){
+            ClienteInsert cl = new ClienteInsert();
+            cl.setNome(jTextFieldNome.getText());
+            cl.setTelefone(jTextFieldTelefone.getText());
+            cl.setRua(jTextFieldRua.getText());
+            cl.setBairro(jTextFieldBairro.getText());
+            cl.setCidade(jTextFieldCidade.getText());
+            cl.setData_nascimento(jTextFieldNascimento.getText());
+            cl.setCpf(jTextFieldCpf.getText());
+            return cl;
+  
+    }
+    
+    
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
             
 
@@ -256,22 +275,15 @@ public class Cliente extends javax.swing.JFrame {
         }
         else{
             //Adicona as informações ao objeto cliente
-            ClienteInsert cl = new ClienteInsert();
-            cl.setNome(jTextFieldNome.getText());
-            cl.setTelefone(jTextFieldTelefone.getText());
-            cl.setRua(jTextFieldRua.getText());
-            cl.setBairro(jTextFieldBairro.getText());
-            cl.setCidade(jTextFieldCidade.getText());
-            cl.setData_nascimento(jTextFieldNascimento.getText());
-            cl.setCpf(jTextFieldCpf.getText());
             
+                        
             RepClientes rep = new RepClientes();
-            if(rep.inserir(cl)){
-                JOptionPane.showConfirmDialog(null, "Cliente adicionado com sucesso");
+            if(rep.inserir(ExtractItens())){
+                JOptionPane.showMessageDialog(null, "Cliente adicionado com sucesso");
                 limparCampos();
             }
             else{
-                JOptionPane.showConfirmDialog(null, "Cliente não adicionado");
+                JOptionPane.showMessageDialog(null, "Cliente não adicionado");
             }
             
             
@@ -300,12 +312,27 @@ public class Cliente extends javax.swing.JFrame {
                 }
                 
                 
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Operação de exclusão não Realizada \n"+ e);
+            }catch(Exception ex){
+                JOptionPane.showMessageDialog(null, "Operação de exclusão não Realizada \n"+ ex);
         }
         }
             
     }//GEN-LAST:event_jButtonExcluirActionPerformed
+
+    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+        RepClientes rep = new RepClientes();
+        try{
+            int id = Integer.parseInt(jTextFieldId.getText());
+            if(rep.atualizar(ExtractItens())){
+                JOptionPane.showMessageDialog(null, "Atualizado com sucesso");
+            }
+                
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Id invalido \n" + ex);
+        }
+        
+            
+    }//GEN-LAST:event_jButtonEditarActionPerformed
 
     /**
      * @param args the command line arguments

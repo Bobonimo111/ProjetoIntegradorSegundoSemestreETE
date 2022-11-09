@@ -8,7 +8,7 @@ import insertDb.ClienteInsert;
 import insertDb.FuncionarioInsert;
 import javax.swing.JOptionPane;
 import repositorio.*;
-
+import insertDb.FuncionarioInsert;
 /**
  *
  * @author Aluno
@@ -22,6 +22,20 @@ public class Funcionario extends javax.swing.JFrame {
         initComponents();
     }
 
+    public FuncionarioInsert ExtractItens(){
+        FuncionarioInsert fn = new FuncionarioInsert();
+        fn.setBairro(jTextFieldBairro.getText());
+        fn.setCargo(jTextFieldCargo.getText());
+        fn.setCidade(jTextFieldCidade.getText());
+        fn.setData_nascimento(jTextFieldNascimento.getText());
+        fn.setEndereco(jTextFieldEndereco.getText());
+        fn.setId(Integer.parseInt(jTextFieldId.getText()));
+        fn.setNome(jTextFieldNome.getText());
+        fn.setTurno(jTextFieldTurno.getText());
+        fn.setCargo(jTextFieldCargo.getText());
+        
+        return fn;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -194,19 +208,30 @@ public class Funcionario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSalvar)
                     .addComponent(jButtonEditar)
                     .addComponent(jButtonExcluir))
-                .addGap(21, 21, 21))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        RepFuncionario rep = new RepFuncionario();
+        try{
+            int id = Integer.parseInt(jTextFieldId.getText());
+            if(rep.excluir(id)){
+                JOptionPane.showMessageDialog(null, "Id exluido com sucesso");
+            }else{
+                JOptionPane.showMessageDialog(null, "Exclusão falha");
+            }
         
+        }catch(Exception ex ){
+            JOptionPane.showMessageDialog(null, "Entre um valor valido" + ex);
+        }
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
@@ -233,20 +258,12 @@ public class Funcionario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Prencha os campos corretamente");
         }
         else{
-            FuncionarioInsert fn = new FuncionarioInsert();
-            fn.setNome(jTextFieldNome.getText());
-            fn.setTelefone(jTextFieldTelefone.getText());
-            fn.setEndereco(jTextFieldEndereco.getText());
-            fn.setBairro(jTextFieldBairro.getText());
-            fn.setCidade(jTextFieldCidade.getText());
-            fn.setData_nascimento(jTextFieldNascimento.getText());
-            fn.setCargo(jTextFieldCargo.getText());
-            fn.setTurno(jTextFieldTurno.getText());
-            
+                       
             RepFuncionario rep = new RepFuncionario();
-            if(rep.inserir(fn)){
+            if(rep.inserir(ExtractItens())){
                 JOptionPane.showConfirmDialog(null, "Cliente adicionado com sucesso");
                 //limparCampos();
+               
             }
             else{
                 JOptionPane.showConfirmDialog(null, "Cliente não adicionado");

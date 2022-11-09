@@ -91,8 +91,8 @@ public class RepClientes {
     public boolean atualizar(ClienteInsert cliente) {
 
         con = ConexaoMySql.getConexao();
-        String sql = "update clientes set nome = ?, "
-                + "cpf = ?, telefone = ?,endereco = ?,bairro = ?, cidade = ? where id = ?";
+        String sql = "update clientes set nome = ?, cpf = ?, telefone = ? " 
+                    + ",rua = ?,bairro = ?, cidade = ?, Data_nascimento = ? where id = ?";
         try {
             con.setAutoCommit(false);
             PreparedStatement stmt = con.prepareStatement(sql);
@@ -103,10 +103,10 @@ public class RepClientes {
             stmt.setString(4, cliente.getRua());
             stmt.setString(5, cliente.getBairro());
             stmt.setString(6, cliente.getCidade());
-            stmt.setInt(7, cliente.getId());
+            stmt.setString(7, cliente.getData_nascimento());
+            stmt.setInt(8, cliente.getId());
              
             stmt.execute();
-
             con.commit();
             ConexaoMySql.fecharConexao();
 
