@@ -4,8 +4,7 @@
  */
 package Cadastros;
 
-import insertDb.ClienteInsert;
-import insertDb.FuncionarioInsert;
+
 import javax.swing.JOptionPane;
 import repositorio.*;
 import insertDb.FuncionarioInsert;
@@ -29,10 +28,9 @@ public class Funcionario extends javax.swing.JFrame {
         fn.setCidade(jTextFieldCidade.getText());
         fn.setData_nascimento(jTextFieldNascimento.getText());
         fn.setEndereco(jTextFieldEndereco.getText());
-        fn.setId(Integer.parseInt(jTextFieldId.getText()));
         fn.setNome(jTextFieldNome.getText());
         fn.setTurno(jTextFieldTurno.getText());
-        fn.setCargo(jTextFieldCargo.getText());
+        fn.setTelefone(jTextFieldTelefone.getText());
         
         return fn;
     }
@@ -220,7 +218,7 @@ public class Funcionario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
-        RepFuncionario rep = new RepFuncionario();
+        RepFuncionarios rep = new RepFuncionarios();
         try{
             int id = Integer.parseInt(jTextFieldId.getText());
             if(rep.excluir(id)){
@@ -247,26 +245,21 @@ public class Funcionario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Prencha os campos corretamente");
         }else if(jTextFieldCidade.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Prencha os campos corretamente");
-        }
-        else if(jTextFieldNascimento.getText().equals("")){
+        }else if(jTextFieldNascimento.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Prencha os campos corretamente");
-        }
-        else if(jTextFieldTurno.getText().equals("")){
+        }else if(jTextFieldTurno.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Prencha os campos corretamente");
-        }
-        else if(jTextFieldCargo.getText().equals("")){
+        }else if(jTextFieldCargo.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Prencha os campos corretamente");
-        }
-        else{
-                       
-            RepFuncionario rep = new RepFuncionario();
-            if(rep.inserir(ExtractItens())){
-                JOptionPane.showConfirmDialog(null, "Cliente adicionado com sucesso");
-                //limparCampos();
-               
+        }else{            
+            RepFuncionarios rep = new RepFuncionarios();
+            if(!rep.inserir(ExtractItens())){
+                JOptionPane.showMessageDialog(null, "Cliente não adicionado");
             }
             else{
-                JOptionPane.showConfirmDialog(null, "Cliente não adicionado");
+                JOptionPane.showMessageDialog(null, "Cliente adicionado com sucesso");
+                //limparCampos();
+                
             }
         }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
