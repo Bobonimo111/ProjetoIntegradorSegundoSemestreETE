@@ -12,7 +12,7 @@ import java.util.List;
 import insertDb.*;
 import javax.swing.JOptionPane;
 
-public class RepFuncionario {
+public class RepFuncionarios {
     
     Connection con;
 

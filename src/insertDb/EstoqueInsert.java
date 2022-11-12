@@ -9,38 +9,52 @@ package insertDb;
  * @author Aluno
  */
 public class EstoqueInsert {
-    
-    private int item;
-    private int quantidade;
+    private int id;
+    private String item_id;
+    private String quantidade;
     private String validade;
-    private double valor_compra;
-    private double venda_valor;
+    private String valor_compra;
+    private String venda_valor;
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
 
     /**
      * @return the item
      */
-    public int getItem() {
-        return item;
+    public String getItem_id() {
+        return item_id;
     }
 
     /**
      * @param item the item to set
      */
-    public void setItem(int item) {
-        this.item = item;
+    public void setItem_id(String item) {
+        this.item_id = item;
     }
 
     /**
      * @return the quantidade
      */
-    public int getQuantidade() {
+    public String getQuantidade() {
         return quantidade;
     }
 
     /**
      * @param quantidade the quantidade to set
      */
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(String quantidade) {
         this.quantidade = quantidade;
     }
 
@@ -61,29 +75,32 @@ public class EstoqueInsert {
     /**
      * @return the valor_compra
      */
-    public double getValor_compra() {
+    public String getValor_compra() {
         return valor_compra;
     }
 
     /**
      * @param valor_compra the valor_compra to set
      */
-    public void setValor_compra(double valor_compra) {
+    public void setValor_compra(String valor_compra) {
         this.valor_compra = valor_compra;
     }
 
     /**
      * @return the venda_valor
      */
-    public double getVenda_valor() {
+    public String getVenda_valor() {
         return venda_valor;
     }
 
     /**
      * @param venda_valor the venda_valor to set
      */
-    public void setVenda_valor(double venda_valor) {
+    public void setVenda_valor(String venda_valor) {
         this.venda_valor = venda_valor;
     }
+    
+ 
+    
     
 }
