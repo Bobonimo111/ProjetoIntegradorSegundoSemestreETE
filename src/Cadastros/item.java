@@ -5,7 +5,8 @@
 package Cadastros;
 import insertDb.ItemInsert;
 import javax.swing.JOptionPane;
-import repositorio.RepItem;
+
+import repositorio.RepItens;
 /**
  *
  * @author Aluno
@@ -20,11 +21,14 @@ public class Item extends javax.swing.JFrame {
     }
     public ItemInsert ExtractItens(){
         ItemInsert in = new ItemInsert();
-        in.setId(Integer.parseInt(jTextFieldId.getText()));
         in.setNome(jTextFieldNome.getText());
         in.setValidade(jTextFieldValiade.getText());
         in.setValor(jTextFieldValor.getText());
-        
+        try{
+            in.setId(Integer.parseInt(jTextFieldId.getText()));
+        }catch(NumberFormatException ex){
+            in.setId(-1);
+        }
         return in;
     }
 
@@ -106,6 +110,11 @@ public class Item extends javax.swing.JFrame {
         });
 
         jButtonExcluir.setText("Excluir");
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
 
         jButtonEditar.setText("Editar");
 
@@ -180,13 +189,22 @@ public class Item extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNomeActionPerformed
 
     private void jButtonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnviarActionPerformed
-        
+        RepItens rep = new RepItens();
         if(jTextFieldNome.getText().equals("") || jTextFieldValiade.getText().equals("") || jTextFieldValor.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Preencha todos os campos, menos o ID");
         }else{
-            
+            if(rep.inserir(ExtractItens())){
+                JOptionPane.showMessageDialog(null, "Irem adicionado ao banco com sucesso");
+            }
         }
     }//GEN-LAST:event_jButtonEnviarActionPerformed
+
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        RepItens rep = new RepItens();
+        if(rep.excluir(ExtractItens().getId())){
+            JOptionPane.showMessageDialog(null, "Item Excluido do banco");
+        }
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     /**
      * @param args the command line arguments
