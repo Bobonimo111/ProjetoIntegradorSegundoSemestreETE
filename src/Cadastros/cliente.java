@@ -6,6 +6,7 @@ package Cadastros;
 
 import insertDb.ClienteInsert;
 import javax.swing.JOptionPane;
+import repositorio.Rep;
 import repositorio.RepClientes;
 
 /**
@@ -264,6 +265,11 @@ public class Cliente extends javax.swing.JFrame {
             cl.setCidade(jTextFieldCidade.getText());
             cl.setData_nascimento(jTextFieldNascimento.getText());
             cl.setCpf(jTextFieldCpf.getText());
+            try{
+                cl.setId(Integer.parseInt(jTextFieldId.getText()));
+            }catch(NumberFormatException ex){
+                cl.setId(-1);
+            }
             return cl;
   
     }
@@ -308,7 +314,7 @@ public class Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNomeActionPerformed
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
-        RepClientes rep = new RepClientes();
+        
         String id_str = jTextFieldId.getText();
         if(id_str.equals("")){
             JOptionPane.showMessageDialog(null, "Campo ID necessario para exclusão");
@@ -316,7 +322,7 @@ public class Cliente extends javax.swing.JFrame {
         else{
             try{
                 int id = Integer.parseInt(id_str);
-                if(rep.excluir(id)){
+                if(new Rep().excluir("clientes", id)){
                     JOptionPane.showMessageDialog(null, "Exclusão realizada com sucesso");
                 }else{
                     JOptionPane.showMessageDialog(null, "Exclusão falhou ID não localizado");

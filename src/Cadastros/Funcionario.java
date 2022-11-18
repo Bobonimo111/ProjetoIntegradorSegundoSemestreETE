@@ -31,7 +31,11 @@ public class Funcionario extends javax.swing.JFrame {
         fn.setNome(jTextFieldNome.getText());
         fn.setTurno(jTextFieldTurno.getText());
         fn.setTelefone(jTextFieldTelefone.getText());
-        
+        try{
+            fn.setId(Integer.parseInt(jTextFieldId.getText()));
+        }catch(NumberFormatException ex){
+            fn.setId(-1);
+        }
         return fn;
     }
     /**
@@ -238,18 +242,14 @@ public class Funcionario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
-        RepFuncionarios rep = new RepFuncionarios();
-        try{
-            int id = Integer.parseInt(jTextFieldId.getText());
-            if(rep.excluir(id)){
+          
+            if(new Rep().excluir("funcionarios", ExtractItens().getId())){
                 JOptionPane.showMessageDialog(null, "Id exluido com sucesso");
             }else{
                 JOptionPane.showMessageDialog(null, "Exclusão falha");
             }
         
-        }catch(Exception ex ){
-            JOptionPane.showMessageDialog(null, "Entre um valor valido" + ex);
-        }
+        
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed

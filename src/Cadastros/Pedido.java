@@ -6,6 +6,7 @@ package Cadastros;
 
 import insertDb.PedidoInsert;
 import javax.swing.JOptionPane;
+import repositorio.Rep;
 import repositorio.RepPedidos;
 
 /**
@@ -234,8 +235,8 @@ public class Pedido extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEnviarActionPerformed
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
-        RepPedidos rep = new RepPedidos();
-        if(rep.excluir(ExtractItens().getId())){
+        
+        if(new Rep().excluir("pedidos", ExtractItens().getId())){
             JOptionPane.showMessageDialog(null, "Pedido excluido com sucesso");
         
         }

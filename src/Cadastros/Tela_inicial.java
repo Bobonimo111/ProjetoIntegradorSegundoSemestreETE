@@ -19,8 +19,23 @@ public class Tela_inicial extends javax.swing.JFrame {
      */
     public Tela_inicial() {
         initComponents();
-        int quantidade = new RepPedidos().quantidade("pedidos");
-        JOptionPane.showConfirmDialog(null, quantidade);
+        int QuantidadeClientes, QuantidadeFuncionarios, QuantidadeEstoque, QuantidadeItens, QuantidadePedidos;
+        
+        QuantidadeFuncionarios = new Rep().quantidade("funcionarios");
+        QuantidadeClientes = new Rep().quantidade("clientes");
+        QuantidadePedidos = new Rep().quantidade("pedidos");
+        QuantidadeEstoque = new Rep().quantidade("estoque");
+        QuantidadeItens = new Rep().quantidade("itens");
+        
+        jLabelFuncionarioTotal.setText(Integer.toString(QuantidadeFuncionarios));
+        jLabelClientestotal.setText(Integer.toString(QuantidadeClientes));
+        jLabelPedidosTotal.setText(Integer.toString(QuantidadePedidos));
+        jLabelEstoqueTotal.setText(Integer.toString(QuantidadeEstoque));
+        jLabelItemTotal.setText(Integer.toString(QuantidadeItens));
+        
+        
+        
+        
     }
 
     /**

@@ -5,6 +5,7 @@
 package Cadastros;
 import insertDb.ItemInsert;
 import javax.swing.JOptionPane;
+import repositorio.Rep;
 
 import repositorio.RepItens;
 /**
@@ -212,9 +213,11 @@ public class Item extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEnviarActionPerformed
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
-        RepItens rep = new RepItens();
-        if(rep.excluir(ExtractItens().getId())){
+        
+        if(new Rep().excluir("itens", ExtractItens().getId())){
             JOptionPane.showMessageDialog(null, "Item Excluido do banco");
+        }else{
+            JOptionPane.showMessageDialog(null, "Exclusão mal sucessida");
         }
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 

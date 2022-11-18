@@ -6,6 +6,7 @@ package Cadastros;
 
 import insertDb.EstoqueInsert;
 import javax.swing.JOptionPane;
+import repositorio.Rep;
 import repositorio.RepEstoque;
 
 /**
@@ -241,8 +242,8 @@ public class Estoque extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEnviarActionPerformed
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
-        RepEstoque rep = new RepEstoque();
-        if(rep.excluir(ExtractItens().getId())){
+        
+        if(new Rep().excluir("estoque", ExtractItens().getId())){
             JOptionPane.showMessageDialog(null, "Removido do estoque");
         }
     }//GEN-LAST:event_jButtonExcluirActionPerformed
