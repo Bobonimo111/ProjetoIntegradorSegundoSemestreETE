@@ -61,51 +61,59 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="22" pref="22" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabelValorVenda" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="22" pref="22" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabelValorVenda" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelValorCompra" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelQuantidade" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelValidade" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jTextFieldValorVenda" alignment="0" pref="186" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldValorCompra" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldValidade" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldQuantidade" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jButtonEnviar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jButtonExcluir" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jButtonEditar" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabelId" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldId" min="-2" pref="36" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabelItem" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldItem" min="-2" pref="141" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabelhome" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jLabelValorCompra" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelQuantidade" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelValidade" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jTextFieldValorVenda" alignment="0" pref="186" max="32767" attributes="0"/>
-                          <Component id="jTextFieldValorCompra" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldValidade" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldQuantidade" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jButtonEnviar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButtonExcluir" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButtonEditar" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabelId" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextFieldId" min="-2" pref="36" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabelItem" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextFieldItem" min="-2" pref="141" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
                   </Group>
-                  <EmptySpace pref="42" max="32767" attributes="0"/>
+                  <EmptySpace pref="38" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel8" alignment="3" pref="59" max="32767" attributes="0"/>
+                      <Component id="jLabelhome" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel8" pref="47" max="32767" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelItem" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelId" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -219,6 +227,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Id"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelhome">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/seta.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="home"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelhomeMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

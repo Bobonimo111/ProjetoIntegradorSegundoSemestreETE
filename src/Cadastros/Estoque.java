@@ -63,6 +63,7 @@ public class Estoque extends javax.swing.JFrame {
         jLabelValorVenda = new javax.swing.JLabel();
         jTextFieldId = new javax.swing.JTextField();
         jLabelId = new javax.swing.JLabel();
+        jLabelhome = new javax.swing.JLabel();
 
         jLabel5.setText("jLabel5");
 
@@ -111,47 +112,60 @@ public class Estoque extends javax.swing.JFrame {
 
         jLabelId.setText("Id");
 
+        jLabelhome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/seta.png"))); // NOI18N
+        jLabelhome.setText("home");
+        jLabelhome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelhomeMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelValorVenda)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jLabel8))
-                    .addComponent(jLabelValorCompra)
-                    .addComponent(jLabelQuantidade)
-                    .addComponent(jLabelValidade)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jTextFieldValorVenda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
-                        .addComponent(jTextFieldValorCompra, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextFieldValidade, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTextFieldQuantidade, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButtonEnviar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonExcluir)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonEditar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelId)
-                            .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(9, 9, 9)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelItem)
-                            .addComponent(jTextFieldItem, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(42, Short.MAX_VALUE))
+                            .addComponent(jLabelValorVenda)
+                            .addComponent(jLabelValorCompra)
+                            .addComponent(jLabelQuantidade)
+                            .addComponent(jLabelValidade)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTextFieldValorVenda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                                .addComponent(jTextFieldValorCompra, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextFieldValidade, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextFieldQuantidade, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButtonEnviar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonExcluir)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonEditar))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelId)
+                                    .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(9, 9, 9)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelItem)
+                                    .addComponent(jTextFieldItem, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabelhome)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel8)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                    .addComponent(jLabelhome))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelItem)
                     .addComponent(jLabelId))
@@ -233,6 +247,11 @@ public class Estoque extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
+    private void jLabelhomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelhomeMouseClicked
+        this.dispose();
+        new Tela_inicial().setVisible(true);
+    }//GEN-LAST:event_jLabelhomeMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -281,6 +300,7 @@ public class Estoque extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelValidade;
     private javax.swing.JLabel jLabelValorCompra;
     private javax.swing.JLabel jLabelValorVenda;
+    private javax.swing.JLabel jLabelhome;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextFieldId;
     private javax.swing.JTextField jTextFieldItem;

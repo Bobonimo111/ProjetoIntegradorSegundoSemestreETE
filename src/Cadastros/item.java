@@ -56,6 +56,7 @@ public class Item extends javax.swing.JFrame {
         jButtonEnviar = new javax.swing.JButton();
         jButtonExcluir = new javax.swing.JButton();
         jButtonEditar = new javax.swing.JButton();
+        jLabelhome = new javax.swing.JLabel();
 
         jInternalFrame1.setVisible(true);
 
@@ -118,6 +119,14 @@ public class Item extends javax.swing.JFrame {
 
         jButtonEditar.setText("Editar");
 
+        jLabelhome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/seta.png"))); // NOI18N
+        jLabelhome.setText("home");
+        jLabelhome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelhomeMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -127,6 +136,10 @@ public class Item extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelhome)
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabel1))
                     .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
@@ -141,10 +154,7 @@ public class Item extends javax.swing.JFrame {
                     .addComponent(jLabelObservação)
                     .addComponent(jLabelClienteId)
                     .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldValiade, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(jLabel1)))
+                    .addComponent(jTextFieldValiade, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -155,9 +165,11 @@ public class Item extends javax.swing.JFrame {
                         .addGap(284, 284, 284)
                         .addComponent(jLabel5))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelhome)
+                            .addComponent(jLabel1))
+                        .addGap(19, 19, 19)
                         .addComponent(jLabelItem)
                         .addGap(4, 4, 4)
                         .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -205,6 +217,12 @@ public class Item extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Item Excluido do banco");
         }
     }//GEN-LAST:event_jButtonExcluirActionPerformed
+
+    private void jLabelhomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelhomeMouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+        new Tela_inicial().setVisible(true);
+    }//GEN-LAST:event_jLabelhomeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -254,6 +272,7 @@ public class Item extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelDataEntrega;
     private javax.swing.JLabel jLabelItem;
     private javax.swing.JLabel jLabelObservação;
+    private javax.swing.JLabel jLabelhome;
     private javax.swing.JTextField jTextFieldId;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldValiade;

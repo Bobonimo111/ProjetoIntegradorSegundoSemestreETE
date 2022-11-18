@@ -15,14 +15,7 @@ public class Main {
     
     public static void main(String[] args) {
         
-        
-        Tela_inicial tela_inicial = new Tela_inicial();
-                
-        tela_inicial.setVisible(true);
-        
-        
-        
-        
+        new Tela_inicial().setVisible(true);
         
     }
     /*
@@ -46,6 +39,10 @@ public class Main {
               
     }
     */
-    
+    public static void principal(){
+        
+    };
+
+   
     
 }

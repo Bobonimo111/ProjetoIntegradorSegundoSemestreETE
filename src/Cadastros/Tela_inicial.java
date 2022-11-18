@@ -19,6 +19,8 @@ public class Tela_inicial extends javax.swing.JFrame {
      */
     public Tela_inicial() {
         initComponents();
+        int quantidade = new RepPedidos().quantidade("pedidos");
+        JOptionPane.showConfirmDialog(null, quantidade);
     }
 
     /**
@@ -161,6 +163,11 @@ public class Tela_inicial extends javax.swing.JFrame {
         );
 
         panel7.setBackground(new java.awt.Color(102, 102, 102));
+        panel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panel7MouseClicked(evt);
+            }
+        });
 
         jLabePedidosIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Pedidos_icon.png"))); // NOI18N
 
@@ -202,6 +209,11 @@ public class Tela_inicial extends javax.swing.JFrame {
         );
 
         panel10.setBackground(new java.awt.Color(102, 102, 102));
+        panel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panel10MouseClicked(evt);
+            }
+        });
 
         jLabelItemIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Item_icon.png"))); // NOI18N
 
@@ -243,6 +255,11 @@ public class Tela_inicial extends javax.swing.JFrame {
         );
 
         panel13.setBackground(new java.awt.Color(102, 102, 102));
+        panel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panel13MouseClicked(evt);
+            }
+        });
 
         jLabelFuncioarioIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Funcionario_icon.png"))); // NOI18N
 
@@ -395,30 +412,55 @@ public class Tela_inicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemFuncionarioActionPerformed
 
     private void jMenuItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteActionPerformed
+        this.dispose();
         new Cliente().setVisible(true);
     }//GEN-LAST:event_jMenuItemClienteActionPerformed
 
     private void jMenuItemItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemItemActionPerformed
+        this.dispose();
         new Item().setVisible(true);
     }//GEN-LAST:event_jMenuItemItemActionPerformed
 
     private void jMenuItemPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPedidoActionPerformed
+        this.dispose();
         new Pedido().setVisible(true);
     }//GEN-LAST:event_jMenuItemPedidoActionPerformed
 
     private void jMenuItemEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEstoqueActionPerformed
+        this.dispose();
         new Estoque().setVisible(true);
     }//GEN-LAST:event_jMenuItemEstoqueActionPerformed
 
     private void panel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel1MouseClicked
-        // TODO add your handling code here:
+        // Estoque
+        this.dispose();
+        new Estoque().setVisible(true);
     }//GEN-LAST:event_panel1MouseClicked
 
     private void panel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel6MouseClicked
         //Cliente
+        this.dispose();
         new Cliente().setVisible(true);
        
     }//GEN-LAST:event_panel6MouseClicked
+
+    private void panel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel10MouseClicked
+        // Item
+        this.dispose();
+        new Item().setVisible(true);
+    }//GEN-LAST:event_panel10MouseClicked
+
+    private void panel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel13MouseClicked
+        // Funcionario
+        this.dispose();
+        new Funcionario().setVisible(true);
+    }//GEN-LAST:event_panel13MouseClicked
+
+    private void panel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panel7MouseClicked
+        // Pedidos
+        this.dispose();
+        new Pedido().setVisible(true);
+    }//GEN-LAST:event_panel7MouseClicked
 
     /**
      * @param args the command line arguments

@@ -73,6 +73,38 @@ public class RepPedidos {
       }
         
   }
+    public int quantidade(String tabela){
+        int quant = -1;
+        con = ConexaoMySql.getConexao();
+        String sql = "select count(id) as total from "+ tabela ;
+        try{
+            con.setAutoCommit(false);
+             
+            
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            while (rs.next()){
+                quant = rs.getInt("total");
+            }
+            
+            stmt.execute();
+            con.commit();
+            ConexaoMySql.fecharConexao();
+        
+        }catch(SQLException ex){
+             try{
+                 con.rollback();
+                 System.err.println(ex.getMessage());
+                 return -1;
+                 
+             }catch(SQLException exSql){
+                 System.err.println(exSql.getMessage());
+             }
+        }
+        return quant;
+        
+    }
     
     /*
     public boolean atualizar(PedidoInsert pedido) {
@@ -121,22 +153,22 @@ public class RepPedidos {
       String sql = "select * from clientes order by id desc";
       
       try{
-          Statement stmt = con.createStatement();
-          ResultSet rs = stmt.executeQuery(sql);
-          while(rs.next()){
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
               
-              ClienteInsert cliente = new ClienteInsert();
+                ClienteInsert cliente = new ClienteInsert();
               
-              cliente.setId(rs.getInt("id"));
-              cliente.setNome(rs.getString("nome"));
-              cliente.setCpf(rs.getString("cpf"));
-              cliente.setTelefone(rs.getString("telefone"));
-              cliente.setRua(rs.getString("rua"));
-              cliente.setBairro(rs.getString("bairro"));
-              cliente.setCidade(rs.getString("cidade"));
-              cliente.setData_nascimento(rs.getString("data_nascimento"));
+                cliente.setId(rs.getInt("id"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setCpf(rs.getString("cpf"));
+                cliente.setTelefone(rs.getString("telefone"));
+                cliente.setRua(rs.getString("rua"));
+                cliente.setBairro(rs.getString("bairro"));
+                cliente.setCidade(rs.getString("cidade"));
+                cliente.setData_nascimento(rs.getString("data_nascimento"));
               
-              clientes.add(cliente);
+                clientes.add(cliente);
           }            
       }catch(SQLException ex){
           JOptionPane.showMessageDialog(null, "Não foi possivel extrair itens" + ex);
