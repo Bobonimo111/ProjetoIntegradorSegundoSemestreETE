@@ -6,6 +6,7 @@ package Cadastros;
 
 import insertDb.EstoqueInsert;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import repositorio.Rep;
 import repositorio.RepEstoque;
 
@@ -20,7 +21,29 @@ public class Estoque extends javax.swing.JFrame {
      */
     public Estoque() {
         initComponents();
+        preencherJTable();
     }
+    
+    public void preencherJTable(){
+        RepEstoque rep = new RepEstoque();
+        DefaultTableModel modelo = (DefaultTableModel) jTableLista.getModel();
+        
+        modelo.setNumRows(0);
+        
+        for(EstoqueInsert c: rep.retornar()){
+            modelo.addRow(new Object[]{
+                c.getId(),
+                c.getItem_id(),
+                c.getQuantidade(),
+                c.getValidade(),
+                c.getValor_compra(),
+                c.getVenda_valor()
+                
+                
+            });
+        }
+    };
+    
     private EstoqueInsert ExtractItens(){
         EstoqueInsert in = new EstoqueInsert();
         in.setItem_id(jTextFieldItem.getText());
@@ -35,6 +58,8 @@ public class Estoque extends javax.swing.JFrame {
         }
         return in;
     } 
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,6 +90,8 @@ public class Estoque extends javax.swing.JFrame {
         jTextFieldId = new javax.swing.JTextField();
         jLabelId = new javax.swing.JLabel();
         jLabelhome = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableLista = new javax.swing.JTable();
 
         jLabel5.setText("jLabel5");
 
@@ -121,6 +148,24 @@ public class Estoque extends javax.swing.JFrame {
             }
         });
 
+        jTableLista.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Item id", "Quantidade", "Validade", "Valor Da Compra", "Valor da venda"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTableLista);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -158,13 +203,15 @@ public class Estoque extends javax.swing.JFrame {
                         .addComponent(jLabelhome)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel8)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(96, 96, 96))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelhome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -184,7 +231,7 @@ public class Estoque extends javax.swing.JFrame {
                 .addComponent(jTextFieldValidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelValorCompra)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(8, 8, 8)
                 .addComponent(jTextFieldValorCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelValorVenda)
@@ -196,6 +243,10 @@ public class Estoque extends javax.swing.JFrame {
                     .addComponent(jButtonExcluir)
                     .addComponent(jButtonEditar))
                 .addGap(45, 45, 45))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -205,18 +256,20 @@ public class Estoque extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 802, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(214, 214, 214)
-                .addComponent(jLabel4)
-                .addContainerGap(243, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(214, 214, 214)
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
@@ -279,11 +332,14 @@ public class Estoque extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Estoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 new Estoque().setVisible(true);
+               
             }
         });
     }
@@ -303,6 +359,8 @@ public class Estoque extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelValorVenda;
     private javax.swing.JLabel jLabelhome;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableLista;
     private javax.swing.JTextField jTextFieldId;
     private javax.swing.JTextField jTextFieldItem;
     private javax.swing.JTextField jTextFieldQuantidade;

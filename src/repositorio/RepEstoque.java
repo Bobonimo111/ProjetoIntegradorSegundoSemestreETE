@@ -78,20 +78,20 @@ public class RepEstoque {
     public boolean atualizar(PedidoInsert estoque) {
 
         con = ConexaoMySql.getConexao();
-        String sql = "update clientes set nome = ?, cpf = ?, telefone = ? " 
+        String sql = "update estoques set nome = ?, cpf = ?, telefone = ? " 
                     + ",rua = ?,bairro = ?, cidade = ?, Data_nascimento = ? where id = ?";
         try {
             con.setAutoCommit(false);
             PreparedStatement stmt = con.prepareStatement(sql);
             
-            stmt.setString(1, cliente.getNome());
-            stmt.setString(2, cliente.getCpf());
-            stmt.setString(3, cliente.getTelefone());
-            stmt.setString(4, cliente.getRua());
-            stmt.setString(5, cliente.getBairro());
-            stmt.setString(6, cliente.getCidade());
-            stmt.setString(7, cliente.getData_nascimento());
-            stmt.setInt(8, cliente.getId());
+            stmt.setString(1, estoque.getNome());
+            stmt.setString(2, estoque.getCpf());
+            stmt.setString(3, estoque.getTelefone());
+            stmt.setString(4, estoque.getRua());
+            stmt.setString(5, estoque.getBairro());
+            stmt.setString(6, estoque.getCidade());
+            stmt.setString(7, estoque.getData_nascimento());
+            stmt.setInt(8, estoque.getId());
              
             stmt.execute();
             con.commit();
@@ -112,31 +112,30 @@ public class RepEstoque {
         }
 
     }  
-    
-    public List<PedidoInsert> retornar(){
+    */
+   
+    public List<EstoqueInsert> retornar(){
       
       con = ConexaoMySql.getConexao();
-      List<ClienteInsert> clientes = new ArrayList<>();
+      List<EstoqueInsert> estoques = new ArrayList<>();
       
-      String sql = "select * from clientes order by id desc";
+      String sql = "select * from estoque order by id desc";
       
       try{
           Statement stmt = con.createStatement();
           ResultSet rs = stmt.executeQuery(sql);
           while(rs.next()){
               
-              ClienteInsert cliente = new ClienteInsert();
+              EstoqueInsert estoque = new EstoqueInsert();
               
-              cliente.setId(rs.getInt("id"));
-              cliente.setNome(rs.getString("nome"));
-              cliente.setCpf(rs.getString("cpf"));
-              cliente.setTelefone(rs.getString("telefone"));
-              cliente.setRua(rs.getString("rua"));
-              cliente.setBairro(rs.getString("bairro"));
-              cliente.setCidade(rs.getString("cidade"));
-              cliente.setData_nascimento(rs.getString("data_nascimento"));
+              estoque.setId(rs.getInt("id"));
+              estoque.setItem_id(rs.getString("item"));
+              estoque.setQuantidade(rs.getString("quantidade"));
+              estoque.setValidade(rs.getString("validade"));
+              estoque.setValor_compra(rs.getString("valor_compra"));
+              estoque.setVenda_valor(rs.getString("venda_valor"));
               
-              clientes.add(cliente);
+              estoques.add(estoque);
           }            
       }catch(SQLException ex){
           JOptionPane.showMessageDialog(null, "Não foi possivel extrair itens" + ex);
@@ -145,22 +144,23 @@ public class RepEstoque {
       
       ConexaoMySql.fecharConexao();
       
-      return clientes;
+      return estoques;
   }  
-       
+      
+    /*
     public List<PedidoInsert> pesquisa(String valor, String tipoPesquisa){
       
       con = ConexaoMySql.getConexao();
-      List<ClienteInsert> clientes = new ArrayList<>();
+      List<ClienteInsert> estoques = new ArrayList<>();
       
       String sql = "";
       
       if(tipoPesquisa.equals("comeca")){
-       sql = "select * from clientes where nome like '"+valor+"%'";
+       sql = "select * from estoques where nome like '"+valor+"%'";
       }else if(tipoPesquisa.equals("contem")){
-       sql = "select * from clientes where nome like '%"+valor+"%'";
+       sql = "select * from estoques where nome like '%"+valor+"%'";
       }else if(tipoPesquisa.equals("cpf")){
-       sql = "select * from clientes where cpf = '"+valor+"'";
+       sql = "select * from estoques where cpf = '"+valor+"'";
       }
       
       try{
@@ -168,17 +168,17 @@ public class RepEstoque {
           ResultSet rs = stmt.executeQuery(sql);
           while(rs.next()){
               
-              ClienteInsert cliente = new ClienteInsert();
+              ClienteInsert estoque = new ClienteInsert();
               
-              cliente.setId(rs.getInt("id"));
-              cliente.setNome(rs.getString("nome"));
-              cliente.setCpf(rs.getString("cpf"));
-              cliente.setTelefone(rs.getString("telefone"));
-              cliente.setRua(rs.getString("endereco"));
-              cliente.setBairro(rs.getString("bairro"));
-              cliente.setCidade(rs.getString("cidade"));
+              estoque.setId(rs.getInt("id"));
+              estoque.setNome(rs.getString("nome"));
+              estoque.setCpf(rs.getString("cpf"));
+              estoque.setTelefone(rs.getString("telefone"));
+              estoque.setRua(rs.getString("endereco"));
+              estoque.setBairro(rs.getString("bairro"));
+              estoque.setCidade(rs.getString("cidade"));
               
-              clientes.add(cliente);
+              estoques.add(estoque);
           }            
       }catch(SQLException ex){
           return null;
@@ -186,7 +186,7 @@ public class RepEstoque {
       
       ConexaoMySql.fecharConexao();
       
-      return clientes;
+      return estoques;
   }  
      */ 
     
