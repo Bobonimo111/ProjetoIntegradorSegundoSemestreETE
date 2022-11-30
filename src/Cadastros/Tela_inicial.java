@@ -19,6 +19,12 @@ public class Tela_inicial extends javax.swing.JFrame {
      */
     public Tela_inicial() {
         initComponents();
+        contador();
+        
+    }
+    public void contador(){
+    
+    
         int QuantidadeClientes, QuantidadeFuncionarios, QuantidadeEstoque, QuantidadeItens, QuantidadePedidos;
         
         QuantidadeFuncionarios = new Rep().quantidade("funcionarios");
@@ -32,9 +38,6 @@ public class Tela_inicial extends javax.swing.JFrame {
         jLabelPedidosTotal.setText(Integer.toString(QuantidadePedidos));
         jLabelEstoqueTotal.setText(Integer.toString(QuantidadeEstoque));
         jLabelItemTotal.setText(Integer.toString(QuantidadeItens));
-        
-        
-        
         
     }
 
