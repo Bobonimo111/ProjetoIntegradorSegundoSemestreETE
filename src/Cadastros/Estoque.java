@@ -15,6 +15,8 @@ import repositorio.RepEstoque;
  * @author Aluno
  */
 public class Estoque extends javax.swing.JFrame {
+    
+    boolean editar;
 
     /**
      * Creates new form Estoque
@@ -22,6 +24,7 @@ public class Estoque extends javax.swing.JFrame {
     public Estoque() {
         initComponents();
         preencherJTable();
+        HabilitarCampos(false);
     }
     
     public void preencherJTable(){
@@ -59,6 +62,25 @@ public class Estoque extends javax.swing.JFrame {
         return in;
     } 
     
+    private void HabilitarCampos(boolean valor){
+        jTextFieldId.setEnabled(false);
+        jTextFieldItem.setEnabled(valor);
+        jTextFieldQuantidade.setEnabled(valor);
+        jTextFieldValidade.setEnabled(valor);
+        jTextFieldValorCompra.setEnabled(valor);
+        jTextFieldValorVenda.setEnabled(valor);
+    
+    } 
+    private void LimparCampos(){
+        jTextFieldId.setText("");
+        jTextFieldItem.setText("");
+        jTextFieldQuantidade.setText("");
+        jTextFieldValidade.setText("");
+        jTextFieldValorCompra.setText("");
+        jTextFieldValorVenda.setText("");
+    }
+    
+    
     
 
     /**
@@ -83,7 +105,7 @@ public class Estoque extends javax.swing.JFrame {
         jLabelValorCompra = new javax.swing.JLabel();
         jTextFieldValorCompra = new javax.swing.JTextField();
         jTextFieldValorVenda = new javax.swing.JTextField();
-        jButtonEnviar = new javax.swing.JButton();
+        jButtonSalvar = new javax.swing.JButton();
         jButtonExcluir = new javax.swing.JButton();
         jButtonEditar = new javax.swing.JButton();
         jLabelValorVenda = new javax.swing.JLabel();
@@ -92,6 +114,8 @@ public class Estoque extends javax.swing.JFrame {
         jLabelhome = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableLista = new javax.swing.JTable();
+        jButtonNovo = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
 
         jLabel5.setText("jLabel5");
 
@@ -114,10 +138,10 @@ public class Estoque extends javax.swing.JFrame {
 
         jLabelValorCompra.setText("Valor da compra");
 
-        jButtonEnviar.setText("Enviar");
-        jButtonEnviar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSalvar.setText("Salvar");
+        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEnviarActionPerformed(evt);
+                jButtonSalvarActionPerformed(evt);
             }
         });
 
@@ -129,6 +153,11 @@ public class Estoque extends javax.swing.JFrame {
         });
 
         jButtonEditar.setText("Editar");
+        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarActionPerformed(evt);
+            }
+        });
 
         jLabelValorVenda.setText("Venda valor");
 
@@ -164,7 +193,26 @@ public class Estoque extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTableLista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableListaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableLista);
+
+        jButtonNovo.setText("Novo");
+        jButtonNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNovoActionPerformed(evt);
+            }
+        });
+
+        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -179,17 +227,6 @@ public class Estoque extends javax.swing.JFrame {
                             .addComponent(jLabelValorCompra)
                             .addComponent(jLabelQuantidade)
                             .addComponent(jLabelValidade)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextFieldValorVenda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
-                                .addComponent(jTextFieldValorCompra, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextFieldValidade, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextFieldQuantidade, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButtonEnviar)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonExcluir)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButtonEditar))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelId)
@@ -197,15 +234,33 @@ public class Estoque extends javax.swing.JFrame {
                                 .addGap(9, 9, 9)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelItem)
-                                    .addComponent(jTextFieldItem, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jTextFieldItem, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jButtonNovo)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jButtonEditar)
+                                    .addGap(6, 6, 6))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jTextFieldValorVenda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldValorCompra, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldValidade, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldQuantidade, javax.swing.GroupLayout.Alignment.LEADING)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabelhome)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel8)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel8))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonExcluir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonCancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonSalvar)))
+                .addGap(18, 31, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,12 +292,16 @@ public class Estoque extends javax.swing.JFrame {
                 .addComponent(jLabelValorVenda)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldValorVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonEnviar)
+                    .addComponent(jButtonEditar)
+                    .addComponent(jButtonNovo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCancelar)
                     .addComponent(jButtonExcluir)
-                    .addComponent(jButtonEditar))
-                .addGap(45, 45, 45))
+                    .addComponent(jButtonSalvar))
+                .addGap(22, 22, 22))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -256,8 +315,8 @@ public class Estoque extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 802, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,28 +342,80 @@ public class Estoque extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldIdActionPerformed
 
-    private void jButtonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnviarActionPerformed
+    private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         RepEstoque rep = new RepEstoque();
-        if(ExtractItens().getQuantidade().equals("") || ExtractItens().getValidade().equals("") || ExtractItens().getItem_id().equals("")){
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatorios");
+        
+        if(this.editar == true){
+            rep.atualizar(ExtractItens());
+            this.editar = false;
+            
+                    
         }else{
+            if(ExtractItens().getQuantidade().equals("") || ExtractItens().getValidade().equals("") || ExtractItens().getItem_id().equals("")){
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatorios");
+            }else{
             if(rep.inserir(ExtractItens())){
                 JOptionPane.showMessageDialog(null, "Adicionado ao estoque");
             }
+            }
         }
-    }//GEN-LAST:event_jButtonEnviarActionPerformed
+        preencherJTable();
+        HabilitarCampos(false);
+        
+    }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
         
-        if(new Rep().excluir("estoque", ExtractItens().getId())){
-            JOptionPane.showMessageDialog(null, "Removido do estoque");
+        if(JOptionPane.showConfirmDialog(null, "Deseja Realmente Exluir o item") == JOptionPane.YES_OPTION){
+           if(new Rep().excluir("estoque", ExtractItens().getId())){
+               System.out.println("Item id exluido com sucesso" + ExtractItens().getId());
+               preencherJTable();
+           }
         }
+        
+        
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     private void jLabelhomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelhomeMouseClicked
         this.dispose();
         new Tela_inicial().setVisible(true);
     }//GEN-LAST:event_jLabelhomeMouseClicked
+
+    private void jTableListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListaMouseClicked
+        // TODO add your handling code here:
+        if (jTableLista.getSelectedRow() != -1){
+            
+            jTextFieldId.setText(jTableLista.getValueAt(jTableLista.getSelectedRow(), 0).toString());
+            jTextFieldItem.setText(jTableLista.getValueAt(jTableLista.getSelectedRow(), 1).toString());
+            jTextFieldQuantidade.setText(jTableLista.getValueAt(jTableLista.getSelectedRow(), 2).toString());
+            jTextFieldValidade.setText(jTableLista.getValueAt(jTableLista.getSelectedRow(), 3).toString());
+            jTextFieldValorCompra.setText(jTableLista.getValueAt(jTableLista.getSelectedRow(), 4).toString());
+            jTextFieldValorVenda.setText(jTableLista.getValueAt(jTableLista.getSelectedRow(), 5).toString());
+            
+        }
+    }//GEN-LAST:event_jTableListaMouseClicked
+
+    private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
+        // TODO add your handling code here:
+        HabilitarCampos(true);
+        this.editar = false;
+        LimparCampos();
+        jTextFieldItem.requestFocus();
+    }//GEN-LAST:event_jButtonNovoActionPerformed
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        // TODO add your handling code here:
+        HabilitarCampos(false);
+        LimparCampos();
+        this.editar = false;
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+        // TODO add your handling code here:
+        HabilitarCampos(true);
+        this.editar = true;
+        
+    }//GEN-LAST:event_jButtonEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -345,9 +456,11 @@ public class Estoque extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonEditar;
-    private javax.swing.JButton jButtonEnviar;
     private javax.swing.JButton jButtonExcluir;
+    private javax.swing.JButton jButtonNovo;
+    private javax.swing.JButton jButtonSalvar;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;

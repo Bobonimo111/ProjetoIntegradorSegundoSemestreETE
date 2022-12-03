@@ -74,24 +74,24 @@ public class RepEstoque {
         
   }
     
-    /*
-    public boolean atualizar(PedidoInsert estoque) {
+    
+    public boolean atualizar(EstoqueInsert estoque) {
 
         con = ConexaoMySql.getConexao();
-        String sql = "update estoques set nome = ?, cpf = ?, telefone = ? " 
-                    + ",rua = ?,bairro = ?, cidade = ?, Data_nascimento = ? where id = ?";
+        String sql = "update estoque set item = ?, quantidade = ?, validade = ? " 
+                    + ",valor_compra = ?,venda_valor = ? "
+                    + " where id = ?";
         try {
             con.setAutoCommit(false);
             PreparedStatement stmt = con.prepareStatement(sql);
             
-            stmt.setString(1, estoque.getNome());
-            stmt.setString(2, estoque.getCpf());
-            stmt.setString(3, estoque.getTelefone());
-            stmt.setString(4, estoque.getRua());
-            stmt.setString(5, estoque.getBairro());
-            stmt.setString(6, estoque.getCidade());
-            stmt.setString(7, estoque.getData_nascimento());
-            stmt.setInt(8, estoque.getId());
+            stmt.setString(1, estoque.getItem_id());
+            stmt.setString(2, estoque.getQuantidade());
+            stmt.setString(3, estoque.getValidade());
+            stmt.setString(4, estoque.getValor_compra());
+            stmt.setString(5, estoque.getVenda_valor());
+            stmt.setInt(6, estoque.getId());
+            
              
             stmt.execute();
             con.commit();
@@ -112,7 +112,7 @@ public class RepEstoque {
         }
 
     }  
-    */
+    
    
     public List<EstoqueInsert> retornar(){
       
