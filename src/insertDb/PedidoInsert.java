@@ -10,11 +10,11 @@ package insertDb;
  */
 public class PedidoInsert {
     private int id;
+    private String cliente_id;
     private String item;
     private String data_entrega;
-    private String cliente_id;
-    private String observacao;
     private String quantidade ;
+    private String observacao;
 
     /**
      * @return the id

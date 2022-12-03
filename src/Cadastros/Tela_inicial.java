@@ -4,8 +4,6 @@
  */
 package Cadastros;
 
-import javax.swing.JOptionPane;
-import main.Main;
 import repositorio.*;
 
 /**

@@ -16,7 +16,7 @@ import repositorio.RepEstoque;
  */
 public class Estoque extends javax.swing.JFrame {
     
-    boolean editar;
+    private boolean editar;
 
     /**
      * Creates new form Estoque
@@ -45,7 +45,7 @@ public class Estoque extends javax.swing.JFrame {
                 
             });
         }
-    };
+    }
     
     private EstoqueInsert ExtractItens(){
         EstoqueInsert in = new EstoqueInsert();
