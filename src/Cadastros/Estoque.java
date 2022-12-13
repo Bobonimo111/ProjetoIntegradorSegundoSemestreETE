@@ -28,7 +28,9 @@ public class Estoque extends javax.swing.JFrame {
     }
     
     public void preencherJTable(){
+        //Arquivo que contem funções pra interação sql
         RepEstoque rep = new RepEstoque();
+        
         DefaultTableModel modelo = (DefaultTableModel) jTableLista.getModel();
         
         modelo.setNumRows(0);
@@ -332,6 +334,7 @@ public class Estoque extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldItemActionPerformed

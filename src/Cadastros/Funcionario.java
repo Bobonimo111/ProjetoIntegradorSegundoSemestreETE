@@ -21,8 +21,10 @@ public class Funcionario extends javax.swing.JFrame {
      */
     public Funcionario() {
         initComponents();
-        preencherJTable();
+//        preencherJTable();
     }
+    
+/*    
     public void preencherJTable(){
         RepFuncionarios rep = new RepFuncionarios();
         DefaultTableModel modelo = (DefaultTableModel) jTableLista.getModel();
@@ -45,7 +47,7 @@ public class Funcionario extends javax.swing.JFrame {
             });
         }
     };
-
+*/
     public FuncionarioInsert ExtractItens(){
         FuncionarioInsert fn = new FuncionarioInsert();
         fn.setBairro(jTextFieldBairro.getText());
@@ -95,8 +97,6 @@ public class Funcionario extends javax.swing.JFrame {
         jTextFieldId = new javax.swing.JTextField();
         jLabelId = new javax.swing.JLabel();
         jLabelhome = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTableLista = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -145,37 +145,6 @@ public class Funcionario extends javax.swing.JFrame {
             }
         });
 
-        jTableLista.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "id", "Nome", "Endereço", "Tel", "Bairro", "Cidade", "Aniversario", "Cargo", "Turno"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTableLista);
-        if (jTableLista.getColumnModel().getColumnCount() > 0) {
-            jTableLista.getColumnModel().getColumn(0).setResizable(false);
-            jTableLista.getColumnModel().getColumn(1).setResizable(false);
-            jTableLista.getColumnModel().getColumn(2).setResizable(false);
-            jTableLista.getColumnModel().getColumn(3).setResizable(false);
-            jTableLista.getColumnModel().getColumn(4).setResizable(false);
-            jTableLista.getColumnModel().getColumn(5).setResizable(false);
-            jTableLista.getColumnModel().getColumn(6).setResizable(false);
-            jTableLista.getColumnModel().getColumn(7).setResizable(false);
-        }
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -183,7 +152,6 @@ public class Funcionario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -294,12 +262,11 @@ public class Funcionario extends javax.swing.JFrame {
                     .addComponent(jButtonSalvar)
                     .addComponent(jButtonEditar)
                     .addComponent(jButtonExcluir))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
@@ -402,8 +369,6 @@ public class Funcionario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNumeroCasa;
     private javax.swing.JLabel jLabelTurno;
     private javax.swing.JLabel jLabelhome;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableLista;
     private javax.swing.JTextField jTextFieldBairro;
     private javax.swing.JTextField jTextFieldCargo;
     private javax.swing.JTextField jTextFieldCidade;
