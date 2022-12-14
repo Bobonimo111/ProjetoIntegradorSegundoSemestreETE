@@ -21,20 +21,20 @@ public class RepFuncionarios {
         con = ConexaoMySql.getConexao(); 
         
         String sql = " insert into funcionarios (nome, "
-                 +   " endereco,telefone,bairro,cidade,data_nascimento,cargo,turno) values "
-                 +   " (?,?,?,?,?,?,?,?) ";
+                 +   " telefone,bairro,cidade,data_nascimento,cargo,turno) values "
+                 +   " (?,?,?,?,?,?,?) ";
          try{
              con.setAutoCommit(false);
              PreparedStatement stmt = con.prepareStatement(sql);
              
              stmt.setString(1, funcionario.getNome());
-             stmt.setString(2, funcionario.getEndereco());
-             stmt.setString(3, funcionario.getTelefone());
-             stmt.setString(4, funcionario.getBairro());
-             stmt.setString(5, funcionario.getCidade());
-             stmt.setString(6, funcionario.getData_nascimento());
-             stmt.setString(7, funcionario.getCargo());
-             stmt.setString(8, funcionario.getTurno());
+             
+             stmt.setString(2, funcionario.getTelefone());
+             stmt.setString(3, funcionario.getBairro());
+             stmt.setString(4, funcionario.getCidade());
+             stmt.setString(5, funcionario.getData_nascimento());
+             stmt.setString(6, funcionario.getCargo());
+             stmt.setString(7, funcionario.getTurno());
              
              stmt.execute();
              con.commit();
@@ -94,7 +94,7 @@ public class RepFuncionarios {
 
         con = ConexaoMySql.getConexao();
         String sql = "update funcionarios set nome = ?, "
-                + "endereco = ?,telefone = ?,bairro = ?, cidade = ?,data_nascimento = ?,cargo = ? , turno =?,  where id = ?";
+                + "endereco = ?,telefone = ?,bairro = ?, cidade = ?,data_nascimento = ?,cargo = ? , turno =?  where id = ?";
         try {
             con.setAutoCommit(false);
             PreparedStatement stmt = con.prepareStatement(sql);
@@ -107,6 +107,7 @@ public class RepFuncionarios {
             stmt.setString(6, funcionario.getData_nascimento());
             stmt.setString(7, funcionario.getCargo());
             stmt.setString(8, funcionario.getTurno());
+            stmt.setInt(9, funcionario.getId());
              
             stmt.execute();
 

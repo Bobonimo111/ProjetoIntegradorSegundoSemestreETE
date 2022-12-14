@@ -354,7 +354,7 @@ public class Pedido extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
-        if(JOptionPane.showConfirmDialog(null, "Deseja realmente apagar o item") == JOptionPane.YES_OPTION){
+        if(JOptionPane.showConfirmDialog(null, "Deseja realmente apagar o pedido") == JOptionPane.YES_OPTION){
             if(new Rep().excluir("pedidos", ExtractItens().getId())){
                 JOptionPane.showMessageDialog(null, "Pedido excluido com sucesso");
                 preencherJTable();

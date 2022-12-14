@@ -72,24 +72,20 @@ public class RepItens {
         
   }
     
-    /*
+    
     public boolean atualizar(ItemInsert item) {
 
         con = ConexaoMySql.getConexao();
-        String sql = "update clientes set nome = ?, cpf = ?, telefone = ? " 
-                    + ",rua = ?,bairro = ?, cidade = ?, Data_nascimento = ? where id = ?";
+        String sql = "UPDATE itens set nome = ? , validade = ? , valor = ? " 
+                   + "WHERE id = ?";
         try {
             con.setAutoCommit(false);
             PreparedStatement stmt = con.prepareStatement(sql);
             
-            stmt.setString(1, cliente.getNome());
-            stmt.setString(2, cliente.getCpf());
-            stmt.setString(3, cliente.getTelefone());
-            stmt.setString(4, cliente.getRua());
-            stmt.setString(5, cliente.getBairro());
-            stmt.setString(6, cliente.getCidade());
-            stmt.setString(7, cliente.getData_nascimento());
-            stmt.setInt(8, cliente.getId());
+            stmt.setString(1, item.getNome());
+            stmt.setString(2, item.getValidade());
+            stmt.setString(3, item.getValor());
+            stmt.setInt(4, item.getId());
              
             stmt.execute();
             con.commit();
@@ -114,27 +110,24 @@ public class RepItens {
     public List<ItemInsert> retornar(){
       
       con = ConexaoMySql.getConexao();
-      List<ClienteInsert> clientes = new ArrayList<>();
+      List<ItemInsert> itens = new ArrayList<>();
       
-      String sql = "select * from clientes order by id desc";
+      String sql = "select * from itens order by id desc";
       
       try{
           Statement stmt = con.createStatement();
           ResultSet rs = stmt.executeQuery(sql);
           while(rs.next()){
               
-              ClienteInsert cliente = new ClienteInsert();
+              ItemInsert item = new ItemInsert();
               
-              cliente.setId(rs.getInt("id"));
-              cliente.setNome(rs.getString("nome"));
-              cliente.setCpf(rs.getString("cpf"));
-              cliente.setTelefone(rs.getString("telefone"));
-              cliente.setRua(rs.getString("rua"));
-              cliente.setBairro(rs.getString("bairro"));
-              cliente.setCidade(rs.getString("cidade"));
-              cliente.setData_nascimento(rs.getString("data_nascimento"));
+              item.setId(rs.getInt("id"));
+              item.setNome(rs.getString("nome"));
+              item.setValidade(rs.getString("validade"));
+              item.setValor(rs.getString("valor"));
               
-              clientes.add(cliente);
+              
+              itens.add(item);
           }            
       }catch(SQLException ex){
           JOptionPane.showMessageDialog(null, "Não foi possivel extrair itens" + ex);
@@ -143,22 +136,23 @@ public class RepItens {
       
       ConexaoMySql.fecharConexao();
       
-      return clientes;
-  }  
-       
+      return itens;
+    }  
+    
+    /*
     public List<ItemInsert> pesquisa(String valor, String tipoPesquisa){
       
       con = ConexaoMySql.getConexao();
-      List<ClienteInsert> clientes = new ArrayList<>();
+      List<ClienteInsert> items = new ArrayList<>();
       
       String sql = "";
       
       if(tipoPesquisa.equals("comeca")){
-       sql = "select * from clientes where nome like '"+valor+"%'";
+       sql = "select * from items where nome like '"+valor+"%'";
       }else if(tipoPesquisa.equals("contem")){
-       sql = "select * from clientes where nome like '%"+valor+"%'";
+       sql = "select * from items where nome like '%"+valor+"%'";
       }else if(tipoPesquisa.equals("cpf")){
-       sql = "select * from clientes where cpf = '"+valor+"'";
+       sql = "select * from items where cpf = '"+valor+"'";
       }
       
       try{
@@ -166,17 +160,17 @@ public class RepItens {
           ResultSet rs = stmt.executeQuery(sql);
           while(rs.next()){
               
-              ClienteInsert cliente = new ClienteInsert();
+              ClienteInsert item = new ClienteInsert();
               
-              cliente.setId(rs.getInt("id"));
-              cliente.setNome(rs.getString("nome"));
-              cliente.setCpf(rs.getString("cpf"));
-              cliente.setTelefone(rs.getString("telefone"));
-              cliente.setRua(rs.getString("endereco"));
-              cliente.setBairro(rs.getString("bairro"));
-              cliente.setCidade(rs.getString("cidade"));
+              item.setId(rs.getInt("id"));
+              item.setNome(rs.getString("nome"));
+              item.setCpf(rs.getString("cpf"));
+              item.setTelefone(rs.getString("telefone"));
+              item.setRua(rs.getString("endereco"));
+              item.setBairro(rs.getString("bairro"));
+              item.setCidade(rs.getString("cidade"));
               
-              clientes.add(cliente);
+              items.add(item);
           }            
       }catch(SQLException ex){
           return null;
@@ -184,7 +178,7 @@ public class RepItens {
       
       ConexaoMySql.fecharConexao();
       
-      return clientes;
+      return items;
   }  
      */ 
     

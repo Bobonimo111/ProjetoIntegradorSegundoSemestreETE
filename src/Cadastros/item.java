@@ -5,6 +5,7 @@
 package Cadastros;
 import insertDb.ItemInsert;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import repositorio.Rep;
 
 import repositorio.RepItens;
@@ -14,12 +15,17 @@ import repositorio.RepItens;
  */
 public class Item extends javax.swing.JFrame {
 
+    
+    boolean editar;
     /**
      * Creates new form item
      */
     public Item() {
         initComponents();
+        PreencherJTable();        
+        HabilitarCampos(false);
     }
+    
     public ItemInsert ExtractItens(){
         ItemInsert in = new ItemInsert();
         in.setNome(jTextFieldNome.getText());
@@ -27,10 +33,44 @@ public class Item extends javax.swing.JFrame {
         in.setValor(jTextFieldValor.getText());
         try{
             in.setId(Integer.parseInt(jTextFieldId.getText()));
+            
         }catch(NumberFormatException ex){
             in.setId(-1);
         }
         return in;
+      
+    }
+    
+    public void PreencherJTable(){
+        RepItens rep = new RepItens();
+        DefaultTableModel modelo = (DefaultTableModel) jTableLista.getModel();
+        
+        modelo.setNumRows(0);
+        
+        for(ItemInsert c: rep.retornar()){
+            modelo.addRow(new Object[]{
+                c.getId(),
+                c.getNome(),
+                c.getValidade(),
+                c.getValor()
+                
+            });
+        }
+    }
+    
+    
+    public void LimparCampos(){
+        jTextFieldId.setText("");
+        jTextFieldNome.setText("");
+        jTextFieldValiade.setText("");
+        jTextFieldValor.setText("");
+        
+    }
+    public void HabilitarCampos(boolean valor){
+        jTextFieldId.setEnabled(false);
+        jTextFieldNome.setEnabled(valor);
+        jTextFieldValiade.setEnabled(valor);
+        jTextFieldValor.setEnabled(valor);
     }
 
     /**
@@ -42,8 +82,7 @@ public class Item extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jInternalFrame1 = new javax.swing.JInternalFrame();
-        jInternalFrame2 = new javax.swing.JInternalFrame();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextFieldId = new javax.swing.JTextField();
         jLabelItem = new javax.swing.JLabel();
@@ -54,41 +93,25 @@ public class Item extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabelObservação = new javax.swing.JLabel();
         jTextFieldValor = new javax.swing.JTextField();
-        jButtonEnviar = new javax.swing.JButton();
-        jButtonExcluir = new javax.swing.JButton();
-        jButtonEditar = new javax.swing.JButton();
         jLabelhome = new javax.swing.JLabel();
-
-        jInternalFrame1.setVisible(true);
-
-        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
-        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
-        jInternalFrame1Layout.setHorizontalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jInternalFrame1Layout.setVerticalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        jInternalFrame2.setVisible(true);
-
-        javax.swing.GroupLayout jInternalFrame2Layout = new javax.swing.GroupLayout(jInternalFrame2.getContentPane());
-        jInternalFrame2.getContentPane().setLayout(jInternalFrame2Layout);
-        jInternalFrame2Layout.setHorizontalGroup(
-            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jInternalFrame2Layout.setVerticalGroup(
-            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        jButtonNovo = new javax.swing.JButton();
+        jButtonEditar = new javax.swing.JButton();
+        jButtonSalvar = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
+        jButtonExcluir = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableLista = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Item");
+
+        jTextFieldId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldIdActionPerformed(evt);
+            }
+        });
 
         jLabelItem.setText("id");
 
@@ -104,10 +127,39 @@ public class Item extends javax.swing.JFrame {
 
         jLabelObservação.setText("Valor*");
 
-        jButtonEnviar.setText("Enviar");
-        jButtonEnviar.addActionListener(new java.awt.event.ActionListener() {
+        jLabelhome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/seta.png"))); // NOI18N
+        jLabelhome.setText("home");
+        jLabelhome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelhomeMouseClicked(evt);
+            }
+        });
+
+        jButtonNovo.setText("Novo");
+        jButtonNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEnviarActionPerformed(evt);
+                jButtonNovoActionPerformed(evt);
+            }
+        });
+
+        jButtonEditar.setText("Editar");
+        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarActionPerformed(evt);
+            }
+        });
+
+        jButtonSalvar.setText("Salvar");
+        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarActionPerformed(evt);
+            }
+        });
+
+        jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
             }
         });
 
@@ -118,56 +170,55 @@ public class Item extends javax.swing.JFrame {
             }
         });
 
-        jButtonEditar.setText("Editar");
-
-        jLabelhome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/seta.png"))); // NOI18N
-        jLabelhome.setText("home");
-        jLabelhome.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelhomeMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(jLabel5)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelhome)
-                        .addGap(42, 42, 42)
-                        .addComponent(jLabel1))
-                    .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jButtonEnviar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonExcluir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonEditar))
-                    .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelItem)
-                    .addComponent(jLabelDataEntrega)
-                    .addComponent(jLabelObservação)
-                    .addComponent(jLabelClienteId)
-                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldValiade, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabelhome)
+                                .addGap(42, 42, 42)
+                                .addComponent(jLabel1))
+                            .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelItem)
+                            .addComponent(jLabelDataEntrega)
+                            .addComponent(jLabelObservação)
+                            .addComponent(jLabelClienteId)
+                            .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldValiade, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(jButtonEditar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonNovo))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButtonExcluir)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonCancelar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonSalvar)))
+                        .addGap(6, 6, 6)))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(284, 284, 284)
                         .addComponent(jLabel5))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelhome)
                             .addComponent(jLabel1))
                         .addGap(19, 19, 19)
@@ -185,48 +236,148 @@ public class Item extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabelObservação)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonEnviar)
-                            .addComponent(jButtonExcluir)
-                            .addComponent(jButtonEditar))))
-                .addContainerGap(55, Short.MAX_VALUE))
+                        .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonNovo)
+                    .addComponent(jButtonEditar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonSalvar)
+                    .addComponent(jButtonExcluir)
+                    .addComponent(jButtonCancelar))
+                .addContainerGap(45, Short.MAX_VALUE))
+        );
+
+        jTableLista.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nome", "Validade", "Valor"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableLista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableListaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTableLista);
+        if (jTableLista.getColumnModel().getColumnCount() > 0) {
+            jTableLista.getColumnModel().getColumn(0).setResizable(false);
+            jTableLista.getColumnModel().getColumn(1).setResizable(false);
+            jTableLista.getColumnModel().getColumn(2).setResizable(false);
+            jTableLista.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        if(JOptionPane.showConfirmDialog(null, "Deseja realmente apagar o item") == JOptionPane.YES_OPTION){
+            if(new Rep().excluir("itens", ExtractItens().getId())){
+                JOptionPane.showMessageDialog(null, "Pedido excluido com sucesso!!");
+                PreencherJTable();
+                LimparCampos();
+            }
+        }
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
+
+    private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+        RepItens rep = new RepItens();
+        if(this.editar == true){
+            rep.atualizar(ExtractItens());
+            this.editar = false;
+        }else{
+            rep.inserir(ExtractItens());
+            
+        }
+        PreencherJTable();
+        HabilitarCampos(false);
+    }//GEN-LAST:event_jButtonSalvarActionPerformed
+
+    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+        // TODO add your handling code here:
+        this.editar = true;
+        HabilitarCampos(true);
+        jTextFieldNome.requestFocus();
+    }//GEN-LAST:event_jButtonEditarActionPerformed
+
+    private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
+        // TODO add your handling code here:
+        HabilitarCampos(true);
+        LimparCampos();
+        this.editar = false;
+        jTextFieldNome.requestFocus();
+    }//GEN-LAST:event_jButtonNovoActionPerformed
+
     private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldNomeActionPerformed
-
-    private void jButtonEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnviarActionPerformed
-        RepItens rep = new RepItens();
-        if(jTextFieldNome.getText().equals("") || jTextFieldValiade.getText().equals("") || jTextFieldValor.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos, menos o ID");
-        }else{
-            if(rep.inserir(ExtractItens())){
-                JOptionPane.showMessageDialog(null, "Irem adicionado ao banco com sucesso");
-            }
-        }
-    }//GEN-LAST:event_jButtonEnviarActionPerformed
-
-    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
-        
-        if(new Rep().excluir("itens", ExtractItens().getId())){
-            JOptionPane.showMessageDialog(null, "Item Excluido do banco");
-        }else{
-            JOptionPane.showMessageDialog(null, "Exclusão mal sucessida");
-        }
-    }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     private void jLabelhomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelhomeMouseClicked
         // TODO add your handling code here:
         this.dispose();
         new Tela_inicial().setVisible(true);
     }//GEN-LAST:event_jLabelhomeMouseClicked
+
+    private void jTableListaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListaMouseClicked
+        // TODO add your handling code here:
+        if (jTableLista.getSelectedRow() != -1){
+
+            jTextFieldId.setText(jTableLista.getValueAt(jTableLista.getSelectedRow(), 0).toString());
+            jTextFieldNome.setText(jTableLista.getValueAt(jTableLista.getSelectedRow(), 1).toString());
+            jTextFieldValiade.setText(jTableLista.getValueAt(jTableLista.getSelectedRow(), 2).toString());
+            jTextFieldValor.setText(jTableLista.getValueAt(jTableLista.getSelectedRow(), 3).toString());
+            
+        }
+    }//GEN-LAST:event_jTableListaMouseClicked
+
+    private void jTextFieldIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIdActionPerformed
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        HabilitarCampos(false);
+        LimparCampos();
+        this.editar = false;
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -271,11 +422,11 @@ public class Item extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonEditar;
-    private javax.swing.JButton jButtonEnviar;
     private javax.swing.JButton jButtonExcluir;
-    private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JInternalFrame jInternalFrame2;
+    private javax.swing.JButton jButtonNovo;
+    private javax.swing.JButton jButtonSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelClienteId;
@@ -283,6 +434,9 @@ public class Item extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelItem;
     private javax.swing.JLabel jLabelObservação;
     private javax.swing.JLabel jLabelhome;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableLista;
     private javax.swing.JTextField jTextFieldId;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldValiade;

@@ -13,7 +13,9 @@ public class ClienteInsert {
     private int id;
     private String nome;
     private String telefone;
-    private String rua,bairro,cidade;
+    private String rua;
+    private String bairro;
+    private String cidade;
     private String data_nascimento;
     private String cpf;
 
