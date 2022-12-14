@@ -139,38 +139,30 @@ public class RepItens {
       return itens;
     }  
     
-    /*
-    public List<ItemInsert> pesquisa(String valor, String tipoPesquisa){
+    
+    public List<ItemInsert> pesquisa(String valor){
       
       con = ConexaoMySql.getConexao();
-      List<ClienteInsert> items = new ArrayList<>();
+      List<ItemInsert> itens = new ArrayList<>();
       
-      String sql = "";
-      
-      if(tipoPesquisa.equals("comeca")){
-       sql = "select * from items where nome like '"+valor+"%'";
-      }else if(tipoPesquisa.equals("contem")){
-       sql = "select * from items where nome like '%"+valor+"%'";
-      }else if(tipoPesquisa.equals("cpf")){
-       sql = "select * from items where cpf = '"+valor+"'";
-      }
+      String sql = "select * from itens where nome like '?' "  ;
+      sql = sql.replace("?", valor);
+      System.out.println(sql);
       
       try{
           Statement stmt = con.createStatement();
           ResultSet rs = stmt.executeQuery(sql);
           while(rs.next()){
               
-              ClienteInsert item = new ClienteInsert();
+              ItemInsert item = new ItemInsert();
               
               item.setId(rs.getInt("id"));
               item.setNome(rs.getString("nome"));
-              item.setCpf(rs.getString("cpf"));
-              item.setTelefone(rs.getString("telefone"));
-              item.setRua(rs.getString("endereco"));
-              item.setBairro(rs.getString("bairro"));
-              item.setCidade(rs.getString("cidade"));
+              item.setValidade(rs.getString("validade"));
+              item.setValor(rs.getString("valor"));
               
-              items.add(item);
+              
+              itens.add(item);
           }            
       }catch(SQLException ex){
           return null;
@@ -178,9 +170,9 @@ public class RepItens {
       
       ConexaoMySql.fecharConexao();
       
-      return items;
+      return itens;
   }  
-     */ 
+      
     
     
     
