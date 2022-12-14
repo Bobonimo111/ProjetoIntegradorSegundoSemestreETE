@@ -15,3 +15,6 @@ Faço esse projeto como avaliação do segundo semestre do meu curso de desenvol
 ```
 git clone https://github.com/Bobonimo111/ProjetoIntegradorSegundoSemestreETE
 ```
+
+Ao baixar o projeto vc de importa o banco de dados no MySql, ou apenas iniciar o apache e o MySQl
+Mas o projeto não ira funcionar corretamente.
